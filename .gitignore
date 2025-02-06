@@ -3,3 +3,4 @@
 */*.mat
 */*.png
 */models_*
+.DS_Store
