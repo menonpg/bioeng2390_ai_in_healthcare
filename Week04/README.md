@@ -8,7 +8,7 @@ Welcome to BIOENG 2390: AI in Healthcare.
 This course provides an introduction to artificial intelligence (AI) and machine learning (ML) in healthcare. The course covers fundamental concepts in AI/ML, data preprocessing, model development, evaluation, and deployment. The course also includes hands-on labs and assignments to apply these concepts to healthcare datasets.
 
 
-# Week 4 Lecture Notes - Machine Learning Model Development and Evaluation (Part 2)
+# Week 4 Lecture Notes, Lecture 7 - Machine Learning Model Development and Evaluation (Part 2)
 
 ## Key Topics Covered
 
@@ -62,3 +62,92 @@ This course provides an introduction to artificial intelligence (AI) and machine
 1. Complete Assignment 1
 2. Begin work on Assignment 2 (model building using H2O)
 3. Next class: Implementation in R
+
+
+
+
+# Week 4 Lecture Notes, Lecture 8
+
+## Administrative Updates
+- Assignments 7.1 and 7.2 are now available
+- Three students have submitted assignment 1
+- Content for assignments has been covered in class
+- H2O experience should help with assignment 2
+
+## Key Concepts Covered
+
+### 1. Types of Classification Problems
+- **Based on Response Variable Type**
+  - Continuous → Regression models
+  - Categorical → Classification models
+
+- **Types of Classification**
+  1. Binary Classification (2 classes)
+  2. Multi-class Single Label
+  3. Multi-class Multi-label
+  4. Binary Multi-label
+
+### 2. Real-world Examples
+1. **ECG Classification**
+   - Binary: Normal vs Abnormal
+   - Multi-class: Normal, AFib, VT, ST elevation, etc.
+   - Multi-label: Multiple conditions in one ECG
+
+2. **MRI Brain Lesion Detection**
+   - Multi-class: Different types of lesions
+   - Multi-label: Multiple lesions in one image
+
+3. **Medical Coding**
+   - Multi-class: Thousands of ICD-10 codes
+   - Multi-label: Multiple conditions per chart
+
+### 3. ROC Curve Operating Points
+- **Three key operating scenarios:**
+  1. **Balanced Dataset**
+     - Optimal threshold where sensitivity ≈ specificity
+     - Typically at northwest corner of ROC curve
+
+  2. **COVID-type Situation**
+     - Higher sensitivity preferred
+     - Lower threshold
+     - Accept more false positives
+     - "Better safe than sorry" approach
+
+  3. **Cancer Drug Situation**
+     - Higher specificity preferred
+     - Higher threshold
+     - Minimize false positives
+     - "Better careful than sorry" approach
+
+### 4. Model Implementation in R
+- Libraries used: tidyverse, caret, pROC, e1071
+- Key steps:
+  1. Data preparation
+  2. Cross-validation setup
+  3. Model training
+  4. Performance evaluation
+  5. ROC curve plotting
+
+### 5. Linear vs Nonlinear Classification
+- **Understanding Through TensorFlow Playground**
+  1. Single neuron → Linear decision boundary
+  2. Multiple neurons → Nonlinear decision boundaries
+  3. Feature engineering impact
+     - Adding nonlinear features (x², y², sin(x), etc.)
+     - Combining with model complexity
+
+### 6. Overfitting Concepts
+- Too many parameters can lead to overfitting
+- Balance needed between:
+  - Model complexity
+  - Feature engineering
+  - Number of neurons/layers
+  - Learning rate
+  - Regularization
+
+## Key Takeaways
+1. Choose classification approach based on problem structure
+2. Select ROC operating point based on use case
+3. Balance model complexity with data requirements
+4. Consider both feature engineering and model architecture
+5. Watch for overfitting when increasing model complexity
