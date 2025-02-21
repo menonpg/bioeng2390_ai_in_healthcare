@@ -96,3 +96,97 @@ Date: February 18, 2025
 - Application of eigenvalues to base classification
 - Linear vs nonlinear clustering methods
 - Reversibility concepts
+
+
+
+# Week 6 Lecture 12: Nonlinear Dimensionality Reduction
+
+## Key Topics
+1. Review of PCA and Introduction to Nonlinear Methods
+2. TSNE (t-Distributed Stochastic Neighbor Embedding)
+3. Practical Implementation and Comparison
+
+## 1. Principal Component Analysis (PCA) Review
+
+### Limitations of PCA
+- PCA discovers intrinsic variance in data, not necessarily structure
+- Structure may not always be related to variance
+- Features used for PCA may not be good descriptors of the underlying structure
+
+### Types of Dimensionality Reduction
+
+#### By Supervision:
+- **Supervised**:
+  - Fischer Linear Discriminant Analysis (LDA)
+  - Neural network techniques (e.g., variational autoencoders)
+- **Unsupervised**:
+  - PCA
+  - Independent Component Analysis
+  - TSNE
+  - ISOMAP
+
+#### By Linearity:
+- **Linear Methods**:
+  - Reversible transformations
+  - Can map between physical and reduced domains
+  - Useful for feature engineering in machine learning pipelines
+- **Nonlinear Methods**:
+  - Not reversible
+  - Better for visualization and understanding data structure
+  - Examples: TSNE, ISOMAP
+
+## 2. TSNE (t-Distributed Stochastic Neighbor Embedding)
+
+### Key Characteristics
+- Aims to solve PCA's limitations with nonlinear scaling
+- Offers optimal separation in reduced dimensions
+- Uses pairwise distances between points
+- Includes hyperparameter "perplexity" (expected number of neighbors)
+
+### How TSNE Works
+1. Measures pairwise distances between points
+2. Uses perplexity to scale distance matrix
+3. Randomly scatters points and iteratively adjusts positions
+4. Optimizes point distances to match similarity matrix
+
+### TSNE vs PCA
+- TSNE axes have no physical meaning
+- Distances are not meaningful in physical units
+- Focus is on structure visualization
+- Results may vary between runs due to non-deterministic nature
+
+## 3. Practical Implementation
+
+### Workflow Demonstrated
+1. Apply dimensionality reduction (PCA/TSNE)
+2. Cluster in reduced space
+3. Learn cluster assignments
+4. Apply to new data
+
+### Learning from TSNE Results
+- Create supervised learning dataset from TSNE labels
+- Train decision tree classifier
+- Apply to full dataset
+- Visualize results with original data
+
+### Code Implementation Notes
+- Used Python libraries: sklearn, pandas
+- Demonstrated normalization and unnormalization
+- Visualization of clustering results
+- Decision tree interpretation of learned rules
+
+## Important Notes for Students
+1. Assignments 1, 2, and 3 are due
+2. Assignment 4: Prepare dataset discussion for Tuesday
+3. Project proposals due first week of March
+4. No strict deadlines but recommended to complete assignments when relevant to current topics
+
+## Technical Requirements
+- Required Python libraries:
+  - scikit-learn
+  - pandas
+  - numpy
+  - matplotlib
+  - DtreeViz (for decision tree visualization)
+
+This lecture effectively bridged the gap between linear and nonlinear dimensionality reduction techniques, providing both theoretical understanding and practical implementation guidance.
