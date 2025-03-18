@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "getFrames"
+    },
+    {
+      "type": "cs",
+      "input": "runAutoML"
+    },
+    {
+      "type": "cs",
+      "input": "runAutoML {\"build_control\":{\"project_name\":\"classifyPurple01\",\"distribution\":\"AUTO\",\"nfolds\":5,\"balance_classes\":false,\"stopping_criteria\":{\"seed\":-1,\"max_models\":0,\"max_runtime_secs\":360,\"max_runtime_secs_per_model\":0,\"stopping_rounds\":3,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":-1},\"keep_cross_validation_predictions\":true,\"keep_cross_validation_models\":true,\"keep_cross_validation_fold_assignment\":false,\"export_checkpoints_dir\":\"/Users/pgmenon/Documents/Pitt/BIOENG2390/GIT/bioeng2390_ai_in_healthcare/Week09/purpleModels/\"},\"input_spec\":{\"training_frame\":\"train.hex\",\"response_column\":\"Class\",\"validation_frame\":\"test.hex\",\"blending_frame\":\"train.hex\",\"leaderboard_frame\":\"test.hex\",\"ignored_columns\":[],\"sort_metric\":\"AUTO\"},\"build_models\":{\"exclude_algos\":[\"DeepLearning\"],\"exploitation_ratio\":-1,\"monotone_constraints\":[]}}, 'exec'"
+    },
+    {
+      "type": "cs",
+      "input": "getLeaderboard \"classifyPurple01@@Class\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"XRT_1_AutoML_1_20250318_182901\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"GBM_grid_1_AutoML_1_20250318_182901_model_12\""
+    }
+  ]
+}

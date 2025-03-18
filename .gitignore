@@ -3,4 +3,6 @@
 */*.mat
 */*.png
 */models_*
+*/*.json
 .DS_Store
+*/purpleModel*
