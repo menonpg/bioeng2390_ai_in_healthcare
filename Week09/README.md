@@ -7,9 +7,7 @@ Welcome to BIOENG 2390: AI in Healthcare. This course includes comprehensive int
 
 
 # Week 9 Lecture Notes, Lecture 17
-Let me provide organized notes for Week 9 Lecture 17. The lecture focused on building and analyzing a color classification model.
-
-# Week 9 Lecture 17 Notes
+This lecture focused on building and analyzing a color classification model.
 
 ## 1. Environment Setup
 - Started with Git repository setup
