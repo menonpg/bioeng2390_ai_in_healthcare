@@ -77,6 +77,6 @@ Welcome to BIOENG 2390: AI in Healthcare. This course includes comprehensive int
 - Shows iterative weight adjustment process
 - Importance of learning rate in convergence
 
-## Next Class
+## Lecture 22
 - Will cover fitting neural networks using PyTorch
 - Practical implementation of concepts covered today
