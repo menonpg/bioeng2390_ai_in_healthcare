@@ -111,3 +111,79 @@ Welcome to BIOENG 2390: AI in Healthcare. This course includes comprehensive int
 - Completing the training process
 - Evaluating model performance
 - Applying these techniques to your own projects
+
+
+
+# Lecture Notes - Lecture 24: Transfer Learning and Text Embeddings
+
+## Introduction & Housekeeping
+- Two more lectures remaining (today and Tuesday)
+- No class next Thursday
+- Reminder: All assignments due by Thursday, April 24th
+
+## Transfer Learning with MobileNet (Continued from Previous Lecture)
+
+### Setting up GPU Environment in Colab
+- Moved transfer learning code to Colab to leverage GPU capabilities
+- Steps to enable GPU:
+  1. Runtime → Change runtime type → Select T4 GPU
+  2. Upload dataset to Colab environment
+  3. Encountered version compatibility issues between local environment and Colab
+
+### Dealing with Version Compatibility Issues
+- Attempted to install specific versions of TensorFlow and Keras
+- Explored options to backdate Python version to 3.9.16 (from instructor's environment)
+- Used generative AI to help upgrade code to work with latest versions of TensorFlow and Keras
+
+### Running Transfer Learning Model with GPU
+- Added code to explicitly check for and use GPU:
+  ```python
+  import tensorflow as tf
+  print("Using GPU:", tf.config.list_physical_devices('GPU'))
+  ```
+- Verified GPU usage through resource monitoring
+- Successfully trained the model with higher efficiency using GPU
+
+### Model Results
+- Achieved 99% accuracy on mask/no mask classification
+- Model saved as H5 file that can be loaded in any compute environment
+- Demonstrated prediction on new observations
+
+## Text Embeddings and Semantic Similarity
+
+### Introduction to Text Embeddings
+- Similar to how image classification models convert images to numbers, text embedding models convert text to vectors
+- Embeddings can be used for semantic similarity comparison between texts
+- Demonstrated using OpenAI's text embedding model (text-embedding-ada-002)
+
+### Creating Text Embeddings with OpenAI API
+- Used OpenAI API to convert text to 1536-dimensional vectors
+- Token limit of 8,191 (approximately 6,000-6,500 words)
+- Calculated similarity between texts using cosine similarity
+
+### Comparing Different Embedding Models
+- Demonstrated sentence-transformers library with all-MiniLM-L6-v2 model
+- This BERT-based model produces 384-dimensional embeddings
+- Showed how different models have different performance for semantic similarity tasks
+- all-MiniLM-L6-v2 provided better differentiation between similar and dissimilar texts
+
+### Applications of Text Embeddings
+- Semantic search and retrieval
+- Vector databases for storing embeddings
+- Retrieval augmented generation (RAG)
+- Similarity scoring as features for classification models
+- Example applications:
+  - Matching job applications to job descriptions
+  - Clinical text analysis using bioclinical BERT models
+
+### Using Hugging Face Models
+- Demonstrated how to use models from Hugging Face for embeddings
+- Example of bioclinical BERT for healthcare text analysis
+- Models can be loaded locally and used for domain-specific embedding tasks
+
+## Next Class Preview
+- Will cover additional machine learning applications beyond classification and embeddings
+- Topics will include object detection and other advanced model applications
+
+## Project Updates
+- Asynchronous meetings available for any issues or questions
