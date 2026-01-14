@@ -10,9 +10,21 @@
 
 Hello and welcome! I'm Professor Prahlad Menon, and I'm thrilled to have you in BIOENG 2390. This first week is all about laying a strong foundation. Think of this as preparing your toolkit before we start building amazing AI applications in healthcare.
 
+### 📺 Lecture 1 Recording & Notes
+**January 13, 2026 - 81 minutes**
+- **[Watch Recording](https://fathom.video/share/B2xPtF4xDdwWipoxVLtfx2KXH4utRqze)**
+- **[Read Detailed Lecture Notes](Lecture01_Notes_Jan13_2026.md)** ← Complete transcript with all links and setup instructions
+
+### What We Covered in Lecture 1:
+- Course logistics (Canvas, Zoom, GitHub, Google Drive)
+- Real-world AI in Healthcare: AATS Risk Calculator example
+- Key ML concepts: response variables, predictive variables, prevalence, bias
+- Development environment setup (VS Code, Git, GitHub Copilot, Miniconda)
+- First hands-on coding with Jupyter notebooks
+
 ### What Makes This Week Special?
 
-This isn't just about installing software - it's about understanding **why** we use these tools and **how** they fit into the AI/healthcare workflow. By the end of this week, you'll have written code in Python, R, and MATLAB, and you'll understand how these tools work together in real research and clinical applications.
+This isn't just about installing software - it's about understanding **why** we use these tools and **how** they fit into the AI/healthcare workflow. By the end of this week, you'll have your development environment set up and be ready to work with real healthcare data.
 
 ---
 
@@ -56,8 +68,6 @@ By the end of this week, you will be able to:
 
 ### Part 1: Understanding the Healthcare Context
 
-**Professor Menon here!** 👋 
-
 Before we jump into code, let me share why this week's material is so important. In healthcare AI, we don't just build models - we work with real patient data, real signals from the human body, and real decisions that can impact lives.
 
 This week, we're going to work with **EEG (Electroencephalography) data** - brain signals that can help detect seizures. Why is this important? Because automated seizure detection can:
@@ -83,12 +93,12 @@ By the end of this week, you will be able to:
 
 ---
 
-## 📖 Interactive Lesson: Your First AI Healthcare Project
+## 📖 Your First AI Healthcare Project
 
 ### Part 1: Understanding the Big Picture
 **Duration: ~10 minutes**
 
-Hello! I'm Professor Prahlad Menon, and welcome to Week 00-01 of AI in Healthcare. Before we dive into code, let me share why this week's content matters.
+Hello! Welcome to Week 00-01 of AI in Healthcare. Before we dive into code, let me share why this week's content matters.
 
 #### The Healthcare Challenge
 
@@ -178,7 +188,7 @@ By the end of Week 00-01, you will:
 
 ### Part 1: Understanding the Problem (5 minutes)
 
-**Professor Menon's Introduction:**
+**Introduction:**
 
 Before we write any code, let's understand *why* we're doing this. In healthcare, we deal with massive amounts of data - from patient records to medical images to biosignals. AI helps us:
 
@@ -242,7 +252,7 @@ import sys
 # - sys: to handle command-line arguments
 ```
 
-**Professor's Question**: *What kind of patient data might we want to generate for testing?*
+** *What kind of patient data might we want to generate for testing?*
 
 Common answers:
 - Demographics (age, gender)
@@ -628,33 +638,19 @@ Have questions? Want to share your work? Use the discussion forum!
 
 ---
 
-## 📝 Assignments
+## 📝 Tasks
 
-### Assignment 1: Environment Setup (Due: End of Week 1)
+### Task 1: Environment Setup 
 - [ ] Install Python, R, and MATLAB (or set up cloud alternatives)
 - [ ] Run all provided scripts successfully
 - [ ] Take screenshots of outputs
 - [ ] Submit a 1-page reflection on the setup process
 
-### Assignment 2: Code Modification (Due: End of Week 1)
+### Task 2: Code Modification 
 - [ ] Complete Exercises 1-3 (Python)
 - [ ] Complete Exercises 4-5 (MATLAB)
 - [ ] Complete Exercises 6-7 (R)
 - [ ] Complete Exercises 8-9 (Jupyter)
-- [ ] Submit your modified code files
-
-### Assignment 3: Mini-Project (Due: End of Week 2)
-Choose ONE challenge (1, 2, or 3) and complete it
-- [ ] Submit code
-- [ ] Submit a brief report (2-3 pages)
-- [ ] Include visualizations
-- [ ] Explain your design decisions
-
----
-
-## ⭐ Student Success Stories
-
-*This section will be updated with examples of great work from students!*
 
 ---
 
@@ -686,7 +682,7 @@ Choose ONE challenge (1, 2, or 3) and complete it
 
 ---
 
-## 🎓 Professor's Final Thoughts
+## 🎓 Final Thoughts
 
 Welcome to the journey! Healthcare AI is one of the most impactful applications of artificial intelligence today. Every skill you learn in this course can help save lives, improve patient care, and advance medical research.
 
@@ -698,9 +694,9 @@ Remember:
 
 I'm excited to see what you'll create! Let's make this a fantastic semester.
 
-**Professor Prahlad Menon, PhD, PMP**  
-*Office Hours: TBA*  
-*Email: [Contact information]*
+**Prahlad Menon, PhD, PMP**  
+*Office Hours: Scheduled via email *
+*Email: prm44@pitt.edu*
 
 ---
 
