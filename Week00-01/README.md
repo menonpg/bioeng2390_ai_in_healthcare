@@ -7,29 +7,48 @@
 ---
 
 ## 🎯 Welcome to Week 00-01!
-Hello and welcome! I'm thrilled to have you in BIOENG 2390. This first week is all about laying a strong foundation. Think of this as preparing your toolkit before we start building amazing AI applications in healthcare.
 
-### 📺 Lecture 1 Recording & Notes
-**January 13, 2026 - 81 minutes**
-- **[Watch Recording](https://fathom.video/share/B2xPtF4xDdwWipoxVLtfx2KXH4utRqze)**
-- **[Read Detailed Lecture Notes](Lecture01_Notes_Jan13_2026.md)** ← Complete transcript with all links and setup instructions
-
-### What We Covered in Lecture 1:
-- Course logistics (Canvas, Zoom, GitHub, Google Drive)
-- Real-world AI in Healthcare: AATS Risk Calculator example
-- Key ML concepts: response variables, predictive variables, prevalence, bias
-- Development environment setup (VS Code, Git, GitHub Copilot, Miniconda)
-- First hands-on coding with Jupyter notebooks
-
-### What Makes This Week Special?
-
-This isn't just about installing software - it's about understanding **why** we use these tools and **how** they fit into the AI/healthcare workflow. By the end of this week, you'll have your development environment set up and be ready to work with real healthcare data.
+Hello and welcome! I'm Professor Prahlad Menon, and I'm thrilled to have you in BIOENG 2390. This first week is all about laying a strong foundation. Think of this as preparing your toolkit before we start building amazing AI applications in healthcare.
 
 ---
 
-## 🎯 Week 00-01: Introduction to Programming and Environment Setup
+## 📺 Lecture Recordings & Notes
 
-### Learning Objectives
+### Lecture 1 - January 13, 2026 (81 minutes)
+**Focus:** Course Setup & Introduction to AI in Healthcare
+
+- **[Watch Recording](https://fathom.video/share/B2xPtF4xDdwWipoxVLtfx2KXH4utRqze)**
+- **[Read Detailed Lecture Notes](Lecture01_Notes_Jan13_2026.md)** ← Complete transcript with all links
+
+**Topics Covered:**
+- Course logistics (Canvas, Zoom, GitHub, Google Drive)
+- Real-world AI in Healthcare: AATS Risk Calculator example  
+- Key ML concepts: response variables, predictive variables, prevalence, bias
+- Development environment setup (VS Code, Git, GitHub Copilot, Miniconda)
+- First hands-on coding with Jupyter notebooks
+- Working with Python to generate synthetic patient data
+
+---
+
+### Lecture 2 - January 15, 2026
+**Focus:** EEG Data Processing Pipeline (MATLAB → R)
+
+**Topics Covered:**
+- MATLAB: Loading and exporting EEG signal data
+- R: Complete EEG data preprocessing workflow
+- Creating time axes for signal data
+- Signal normalization (z-score)
+- Adding ground truth labels for classification
+- Kernel density visualization
+- Multi-language data pipelines
+
+**Files Created:**
+- `MATtoCSV.m` - MATLAB script for EEG data export
+- `ExploreEEGData_1152026.R` ⭐ **NEW!** - Complete R preprocessing pipeline
+
+---
+
+## 🎯 Week Learning Objectives
 
 By the end of this week, you will be able to:
 
@@ -37,64 +56,99 @@ By the end of this week, you will be able to:
 2. ✅ Write and execute basic programs in all three languages
 3. ✅ Understand when to use each language in healthcare applications
 4. ✅ Work with real biomedical data (EEG signals)
-5. ✅ Use version control (Git/GitHub) for your projects
-6. ✅ Navigate between different IDEs and cloud platforms
+5. ✅ Process data through multi-language pipelines
+6. ✅ Use version control (Git/GitHub) for your projects
+7. ✅ Navigate between different IDEs and cloud platforms
 
 ---
 
-## 🎓 Interactive Lesson: Your First Week in AI Healthcare
-This week is all about getting you set up for success. Think of this week as building your toolkit - we're going to set up all the environments and learn the basic programming skills you'll need throughout the semester.
+## 📁 Week 00-01 Files & Data Processing Pipeline
 
-### 🎯 Learning Objectives
+### Complete EEG Data Workflow
 
-By the end of this week, you will be able to:
+#### Step 1: Generate Synthetic Data (Python)
+**File:** `generate_csv.py`
+- Generates synthetic patient data (age, height, weight, gender)
+- Demonstrates pandas DataFrames and CSV export
+- **Usage:** `python generate_csv.py myFile.csv`
 
-1. ✅ Set up development environments for Python, R, and MATLAB
-2. ✅ Write and run basic programs in all three languages
-3. ✅ Work with CSV files and data import/export
-4. ✅ Create visualizations of healthcare data
-5. ✅ Use Git and GitHub for version control
-6. ✅ Process real biomedical signals (EEG data)
+#### Step 2: Process EEG Signals (MATLAB) 
+**File:** `MATtoCSV.m`
+- Loads `EEG_sleep.mat` containing brain wave data
+- Visualizes signal at different sampling rates
+- Exports 10,000 data points (500 Hz, 20 seconds)
+- **Output:** `s_of_t_subset.csv`
+
+#### Step 3: Analyze & Preprocess (R) - **Lecture 2 Content** ⭐
+**File:** `ExploreEEGData_1152026.R` **NEW!**
+
+This complete R script demonstrates the full preprocessing pipeline:
+
+**Key Features:**
+- Imports EEG data from CSV (output of MATtoCSV.m)
+- Creates time axis: `time = (row_number - 1) / 500` (500 Hz sampling)
+- Normalizes signal: `normalizedValue = (s - mean(s)) / sd(s)` (z-score)
+- Adds ground truth labels: "Seizure" if time > 12s, else "Normal"
+- Generates visualizations:
+  - Time series plot of raw EEG signal
+  - Time series plot of normalized signal
+  - Kernel density plots (unnormalized vs normalized)
+  - Density plot of normalized signal only
+
+**Dependencies:**
+```r
+library(readr)   # For reading CSV files
+library(dplyr)   # For data manipulation
+```
+
+**Output Files:**
+- `s_of_t_subset_withTimeAxis.csv` - EEG data with time column
+- `s_of_t_subset_CLEAN.csv` - Complete processed dataset with:
+  - `value`: Raw signal values
+  - `time`: Time in seconds  
+  - `normalizedValue`: Z-score normalized signal
+  - `GT`: Ground truth labels (Seizure/Normal)
+
+**Usage:**
+```r
+# After running MATtoCSV.m in MATLAB:
+source("ExploreEEGData_1152026.R")
+```
+
+#### Step 4: Interactive Exploration (Jupyter)
+**File:** `myFirstNotebook.ipynb`
+- Interactive Python notebook environment
+- Demonstrates combining code, visualizations, and markdown
+- Can be used to further analyze the processed EEG data
 
 ---
 
-## 📖 Interactive Lesson Guide
+### Additional Files
+
+#### `loadData.R` (Legacy)
+Earlier version of the R data processing script. Use `ExploreEEGData_1152026.R` for the updated Spring 2026 version with complete pipeline.
+
+---
+
+## 📖 Self-Paced Interactive Learning Guide
+
+*The following sections provide additional self-paced learning materials to supplement the lectures. Work through these at your own pace to deepen your understanding.*
+
+---
 
 ### Part 1: Understanding the Healthcare Context
 
 Before we jump into code, let me share why this week's material is so important. In healthcare AI, we don't just build models - we work with real patient data, real signals from the human body, and real decisions that can impact lives.
 
-This week, we're going to work with **EEG (Electroencephalography) data** - brain signals that can help detect seizures. Why is this important? Because automated seizure detection can:
+This week, we're working with **EEG (Electroencephalography) data** - brain signals that can help detect seizures. Why is this important? Because automated seizure detection can:
 - Alert caregivers to dangerous seizure events
 - Help neurologists diagnose epilepsy
 - Enable better treatment monitoring
 - Potentially save lives through early intervention
 
-But before we can build AI models to detect seizures, we need to understand the fundamentals of programming and data handling. That's where we begin.
-
 ---
 
-## Week 00-01: Your First Steps into AI in Healthcare
-
-### 🎯 Learning Objectives
-
-By the end of this week, you will be able to:
-1. Set up development environments for Python, R, and MATLAB
-2. Write basic scripts in all three languages
-3. Load and visualize healthcare data
-4. Understand the basics of version control with Git
-5. Process and export data between different formats
-
----
-
-## 📖 Your First AI Healthcare Project
-
-### Part 1: Understanding the Big Picture
-**Duration: ~10 minutes**
-
-Hello! Welcome to Week 00-01 of AI in Healthcare. Before we dive into code, let me share why this week's content matters.
-
-#### The Healthcare Challenge
+### Part 2: The Healthcare Challenge
 
 Imagine a patient in an intensive care unit, connected to multiple monitors tracking heart rate, brain activity, oxygen levels, and more. Every second, these devices generate thousands of data points. Now imagine trying to manually watch all these signals for hundreds of patients. Impossible, right?
 
@@ -103,100 +157,9 @@ This is where AI comes in. But before we can build intelligent systems to help d
 2. How to process and visualize data
 3. How to extract meaningful patterns from signals
 
-This week, we're starting that journey.
-
 ---
 
-## 🎓 Week 00-01: Your First Steps into Healthcare AI
-
-### Learning Objectives
-
-By the end of this week, you will:
-- ✅ Set up your programming environments (Python, R, MATLAB)
-- ✅ Understand basic data structures and file operations
-- ✅ Work with real EEG (brain wave) data
-- ✅ Create your first visualizations
-- ✅ Export and share data between different platforms
-
----
-
-## 📖 Interactive Lesson: From Data to Insights
-
-### Part 1: The Big Picture (5 minutes)
-**Let me start by asking you a question: What do you think is the most critical skill in AI for Healthcare?*
-
-**Answer:** It's not building the fanciest neural network or knowing every algorithm. It's understanding your data. And to understand data, you need to be able to **generate it, manipulate it, visualize it, and analyze it** across different tools and platforms.
-
-In healthcare, we deal with:
-- 📊 **Time series data** (EEG, ECG, vital signs)
-- 🖼️ **Image data** (X-rays, MRI, CT scans)
-- 📝 **Text data** (clinical notes, research papers)
-
-This week, we'll build the foundation to work with all of these!
-
----
-
-## 🎯 Week 00-01 Learning Objectives
-
-By the end of this week, you will be able to:
-
-1. ✅ Set up development environments for Python, R, and MATLAB
-2. ✅ Write basic programs in all three languages
-3. ✅ Load, process, and visualize healthcare data
-4. ✅ Use version control with Git and GitHub
-5. ✅ Work with real EEG (brain wave) data
-
----
-
-## 📖 Interactive Lesson Plan
-
-### Part 1: Understanding the Healthcare AI Landscape (15 minutes)
-**Why are we here?**
-
-Before we dive into code, let's talk about why AI in healthcare matters. Every day, hospitals generate terabytes of data: EEG signals from epilepsy patients, medical images from MRIs and CT scans, electronic health records, genomic sequences, and much more. This data holds the key to better diagnoses, personalized treatments, and ultimately, saving lives.
-
-But here's the challenge: **How do we turn raw data into actionable insights?** That's where AI comes in, and that's what you'll learn in this course.
-
-### Real-World Impact
-
-Consider this: An epilepsy patient may have hours of EEG recordings. A human expert can't monitor every second of brain activity, but an AI model can. That's what we'll learn to build - tools that can analyze healthcare data at scale and help clinicians make better decisions.
-
----
-
-## 🎯 Today's Learning Goals
-
-By the end of Week 00-01, you will:
-
-1. ✅ Set up your development environments (Python, R, MATLAB)
-2. ✅ Write your first programs in all three languages
-3. ✅ Understand the basics of version control with Git
-4. ✅ Work with real healthcare data (EEG signals)
-5. ✅ Generate visualizations and export data
-
----
-
-## 🎓 Interactive Lesson: Your First Steps in Healthcare AI
-
-### Part 1: Understanding the Problem (5 minutes)
-
-**Introduction:**
-
-Before we write any code, let's understand *why* we're doing this. In healthcare, we deal with massive amounts of data - from patient records to medical images to biosignals. AI helps us:
-
-1. **Detect patterns** humans might miss
-2. **Predict outcomes** to enable preventive care
-3. **Automate analysis** to save time and reduce errors
-4. **Personalize treatment** based on individual data
-
-**This Week's Challenge:**  
-We're going to work with EEG (electroencephalography) data - brain signals that can help detect seizures. Your goal is to:
-- Load and visualize this data
-- Process and export it for analysis
-- Create a simple classification system
-
----
-
-### Part 2: Setting Up Your Workspace (15 minutes)
+### Part 3: Setting Up Your Workspace
 
 #### Option A: Google Colab (Easiest - No installation needed!)
 1. Go to [colab.research.google.com](https://colab.research.google.com)
@@ -210,308 +173,131 @@ We're going to work with EEG (electroencephalography) data - brain signals that 
 3. **Install Extensions**:
    - Python (by Microsoft)
    - Jupyter (by Microsoft)
+   - GitHub Copilot
 4. **Install R**: Download from [r-project.org](https://www.r-project.org/)
 5. **Install MATLAB**: Use your Pitt credentials at [matlab.mathworks.com](https://matlab.mathworks.com)
+6. **Install Miniconda**: Use GitHub Copilot agent mode to install automatically
 
 #### Option C: Cloud Alternatives
 - **RStudio Cloud** (for R): [posit.cloud](https://posit.cloud)
 - **MATLAB Online**: [matlab.mathworks.com](https://matlab.mathworks.com)
+- **Lightning AI**: [lightning.ai](https://lightning.ai)
 
 ---
 
-### Part 3: Your First Python Program (20 minutes)
+### Part 4: Your First Python Program
 
 **🎯 Learning Goal**: Generate synthetic patient data and save it as CSV
 
-**Professor's Tip**: *We're starting with synthetic data so you can understand the structure before working with real medical data. In practice, we often use synthetic data for testing and development.*
-
-#### Step-by-Step Walkthrough:
-
-**📂 File**: `generate_csv.py`
-
-Open this file in your editor. Let's walk through it together:
+**File**: `generate_csv.py`
 
 ```python
-# Step 1: Import libraries
 import pandas as pd
 import numpy as np
 import sys
 
-# Why these libraries?
-# - pandas: for data manipulation (think Excel on steroids)
-# - numpy: for numerical operations (fast math!)
-# - sys: to handle command-line arguments
-```
+# Set random seed for reproducibility
+np.random.seed(42)
 
-** *What kind of patient data might we want to generate for testing?*
-
-Common answers:
-- Demographics (age, gender)
-- Vital signs (heart rate, blood pressure)
-- Physical measurements (height, weight)
-
-Let's generate some!
-
-```python
-# Step 2: Set random seed for reproducibility
-np.random.seed(42)  # Why 42? Google it! 😊
-
-# Step 3: Generate 20 patients
+# Generate 20 patients
 n_patients = 20
 data = {
-    'age': np.random.randint(18, 80, n_patients),      # Ages 18-79
-    'height': np.random.uniform(150, 190, n_patients),  # cm
-    'weight': np.random.uniform(50, 100, n_patients),   # kg
-    'gender': np.random.choice(['M', 'F'], n_patients)  # Binary classification
+    'age': np.random.randint(18, 80, n_patients),
+    'height': np.random.uniform(150, 190, n_patients),
+    'weight': np.random.uniform(50, 100, n_patients),
+    'gender': np.random.choice(['M', 'F'], n_patients)
 }
 
-# Step 4: Create DataFrame and save
+# Create DataFrame and save
 df = pd.DataFrame(data)
 filename = sys.argv[1] if len(sys.argv) > 1 else 'myFile.csv'
 df.to_csv(filename, index=False)
 print(f"✅ Generated {filename} with {n_patients} patients!")
 ```
 
-#### Try It Yourself! 🚀
-
-**Exercise 1**: Run the script
+**Try It Yourself:**
 ```bash
 python generate_csv.py myFile.csv
 ```
 
-**Exercise 2**: Modify the script to add a new column called `bmi` (Body Mass Index)
-- Formula: BMI = weight (kg) / (height (m))²
-- Hint: height is in cm, so divide by 100 first!
-
-<details>
-<summary>Click to see the solution</summary>
-
-```python
-# Add after creating the data dictionary:
-data['bmi'] = data['weight'] / ((data['height']/100) ** 2)
-```
-</details>
-
-**Exercise 3**: Change the age range to focus on elderly patients (65-85 years)
-
 ---
 
-### Part 4: Working with Real Medical Data - MATLAB (30 minutes)
+### Part 5: Working with Real Medical Data - MATLAB
 
-**🎯 Learning Goal**: Process EEG brain signals to detect seizures
+**🎯 Learning Goal**: Process EEG brain signals
 
-**Professor's Context**: *EEG measures electrical activity in the brain. During a seizure, we see abnormal patterns in these signals. Let's visualize and process this data.*
-
-#### Understanding the Data:
-
-**📂 File**: `MATtoCSV.m`
+**File**: `MATtoCSV.m`
 
 The EEG data we're using:
 - **Sampling Rate**: 500 Hz (500 measurements per second)
 - **Duration**: 20 seconds (10,000 data points)
 - **Signal**: Brain electrical activity in microvolts (μV)
 
-#### MATLAB Code Walkthrough:
-
+**Key MATLAB Operations:**
 ```matlab
-% Step 1: Load the data
+% Load the data
 load('EEG_sleep.mat');
-% This loads a variable called 's' containing our signal
 
-% Step 2: Visualize the full signal
-figure(1); clf;
+% Visualize
 plot(s, 'b', 'LineWidth', 1.5);
 title('EEG Signal - Full Resolution');
-xlabel('Sample Number');
-ylabel('Amplitude (μV)');
-grid on;
-```
 
-**Professor's Insight**: *Notice how the signal varies? The brain is never completely still, even during sleep. But during a seizure, we'd see much more dramatic oscillations.*
-
-```matlab
-% Step 3: Compare different sampling rates
-figure(2); clf;
-
-% Full resolution
-subplot(2,1,1);
-plot(s(1:1000), 'b', 'LineWidth', 1.5);
-title('First 1000 Points - Full Resolution (500 Hz)');
-xlabel('Sample Number'); ylabel('Amplitude (μV)');
-
-% Decimated (every 100th point = 5 Hz)
-subplot(2,1,2);
-plot(s(1:100:1000), 'r-o', 'LineWidth', 1.5);
-title('Same Data - Decimated (5 Hz)');
-xlabel('Sample Number'); ylabel('Amplitude (μV)');
-```
-
-**Professor's Question**: *Why might we want to downsample (reduce) the data?*
-
-Answers:
-- Reduce file size for storage
-- Speed up processing
-- Remove high-frequency noise
-- BUT: We might lose important information!
-
-```matlab
-% Step 4: Export to CSV for use in Python/R
-subset = s(1:10000);  % First 10,000 points
+% Export to CSV
+subset = s(1:10000);
 csvwrite('s_of_t_subset.csv', subset);
-disp('✅ Exported data to s_of_t_subset.csv');
 ```
-
-#### Try It Yourself! 🚀
-
-**Exercise 4**: Modify the MATLAB script to:
-1. Export data with a time column (time = sample_number / 500)
-2. Add basic statistics (mean, std, min, max) to the output
-
-**Exercise 5**: Create a histogram of the signal values
-- Hint: Use the `histogram()` function
-- What does the distribution tell you about the signal?
 
 ---
 
-### Part 5: Data Analysis with R (30 minutes)
+### Part 6: Data Analysis with R
 
-**🎯 Learning Goal**: Analyze EEG data and classify normal vs seizure states
+**🎯 Learning Goal**: Create complete preprocessing pipeline
 
-**📂 File**: `loadData.R`
+**File**: `ExploreEEGData_1152026.R` (covered in Lecture 2)
 
-**Professor's Context**: *R is excellent for statistical analysis and visualization. We'll use it to analyze the patterns in our EEG data and identify when seizures might be occurring.*
-
-#### R Code Walkthrough:
-
+**Key R Operations:**
 ```r
-# Step 1: Load required libraries
-library(readr)   # For reading CSV files
-library(dplyr)   # For data manipulation
-library(ggplot2) # For beautiful plots
+library(readr)
+library(dplyr)
 
-# Step 2: Read the data
-data <- read_csv('s_of_t_subset.csv', col_names = 'signal')
+# Read CSV
+s_of_t_subset <- read_csv("s_of_t_subset.csv", col_names = c("s"))
+
+# Create time axis
+s_of_t_subset <- s_of_t_subset %>% 
+  mutate(time = (row_number() - 1) / 500)
+
+# Normalize
+s_of_t_subset$normalizedValue <- (s_of_t_subset$s - mean(s_of_t_subset$s)) / sd(s_of_t_subset$s)
+
+# Add labels
+s_of_t_subset$GT <- ifelse(s_of_t_subset$time > 12, "Seizure", "Normal")
+
+# Visualize
+plot(s_of_t_subset$time, s_of_t_subset$normalizedValue,
+     main = "Normalized EEG Signal Depicting Seizure",
+     xlab = "Time (seconds)", ylab = "Normalized Signal", type = "l")
 ```
-
-```r
-# Step 3: Add time information
-sampling_freq <- 500  # Hz
-data <- data %>%
-  mutate(
-    time = (row_number() - 1) / sampling_freq,  # Convert to seconds
-    signal_norm = (signal - mean(signal)) / sd(signal)  # Normalize
-  )
-```
-
-**Professor's Tip**: *Normalization (z-score) helps us compare signals of different scales. After normalization, most values should be between -3 and 3.*
-
-```r
-# Step 4: Add seizure labels
-# In this dataset, seizure occurs after 12 seconds
-data <- data %>%
-  mutate(
-    state = ifelse(time > 12, 'seizure', 'normal'),
-    state_numeric = ifelse(state == 'seizure', 1, 0)
-  )
-```
-
-```r
-# Step 5: Visualize the signal with states
-ggplot(data, aes(x = time, y = signal_norm, color = state)) +
-  geom_line(size = 0.5) +
-  scale_color_manual(values = c('normal' = 'blue', 'seizure' = 'red')) +
-  labs(
-    title = 'EEG Signal: Normal vs Seizure States',
-    x = 'Time (seconds)',
-    y = 'Normalized Amplitude',
-    color = 'Brain State'
-  ) +
-  theme_minimal() +
-  theme(legend.position = 'top')
-```
-
-```r
-# Step 6: Compare distributions
-ggplot(data, aes(x = signal_norm, fill = state)) +
-  geom_density(alpha = 0.5) +
-  scale_fill_manual(values = c('normal' = 'blue', 'seizure' = 'red')) +
-  labs(
-    title = 'Signal Distribution: Normal vs Seizure',
-    x = 'Normalized Amplitude',
-    y = 'Density',
-    fill = 'Brain State'
-  ) +
-  theme_minimal()
-```
-
-**Professor's Analysis**: *Look at the density plots! Do you see how the distributions differ? During a seizure, we often see:*
-- Higher amplitude variations
-- Different frequency patterns
-- Less predictable behavior
-
-#### Try It Yourself! 🚀
-
-**Exercise 6**: Calculate summary statistics for each state
-```r
-data %>%
-  group_by(state) %>%
-  summarise(
-    mean_amplitude = mean(signal_norm),
-    sd_amplitude = sd(signal_norm),
-    max_amplitude = max(signal_norm),
-    min_amplitude = min(signal_norm)
-  )
-```
-
-**Exercise 7**: Create a simple classifier
-- If absolute amplitude > 2, predict seizure
-- Calculate accuracy: What percentage did we get right?
-
-<details>
-<summary>Click to see the solution</summary>
-
-```r
-data <- data %>%
-  mutate(
-    predicted = ifelse(abs(signal_norm) > 2, 'seizure', 'normal'),
-    correct = predicted == state
-  )
-
-accuracy <- sum(data$correct) / nrow(data) * 100
-cat(sprintf("Classifier Accuracy: %.1f%%\n", accuracy))
-```
-</details>
 
 ---
 
-### Part 6: Jupyter Notebook - Bringing It All Together (20 minutes)
+## 🎯 Practice Exercises
 
-**🎯 Learning Goal**: Interactive exploration in a notebook environment
+### Exercise 1: Modify Python Script (Beginner)
+Add a `bmi` column to the patient data:
+- Formula: BMI = weight (kg) / (height (m))²
+- Hint: height is in cm, divide by 100 first!
 
-**📂 File**: `myFirstNotebook.ipynb`
+### Exercise 2: Explore MATLAB Visualization (Intermediate)
+- Create a histogram of the EEG signal values
+- Calculate basic statistics (mean, std, min, max)
+- Export data with time column included
 
-**Professor's Context**: *Jupyter notebooks are fantastic for exploratory data analysis. You can mix code, visualizations, and explanations all in one document - perfect for research and presentations!*
-
-#### What Makes Notebooks Special?
-
-1. **Interactive**: Run code cell by cell, see results immediately
-2. **Visual**: Embed plots right in the document
-3. **Explanatory**: Mix markdown text with code
-4. **Reproducible**: Share your entire analysis with others
-
-#### Try It Yourself! 🚀
-
-**Exercise 8**: Open `myFirstNotebook.ipynb` and:
-1. Run all cells to see the student data generation
-2. Add a new cell to create a scatter plot: height vs weight
-3. Add another cell to calculate correlation between height and weight
-4. Use markdown to explain what you found
-
-**Exercise 9**: Create a new notebook from scratch:
-1. Load the EEG data CSV
-2. Plot the signal
-3. Calculate the power spectrum (frequency content)
-4. Write a conclusion about what you learned
+### Exercise 3: Enhance R Analysis (Advanced)
+- Calculate rolling statistics (moving window mean and std)
+- Create a simple classifier using amplitude thresholds
+- Calculate accuracy, precision, and recall
+- Plot ROC curve
 
 ---
 
@@ -519,31 +305,24 @@ cat(sprintf("Classifier Accuracy: %.1f%%\n", accuracy))
 
 ### Challenge 1: The Patient Database (Beginner)
 Create a more realistic patient dataset:
-- Add patient ID
-- Add admission date
-- Add diagnosis codes
+- Add patient ID, admission date, diagnosis codes
 - Include missing values (realistic!)
 - Generate 100 patients instead of 20
-
-**Bonus**: Add relationships (e.g., family members have correlated features)
+- **Bonus**: Add family relationships with correlated features
 
 ### Challenge 2: Seizure Detector (Intermediate)
 Improve the seizure detection:
-- Calculate rolling statistics (mean, std in a moving window)
 - Use multiple features for classification
-- Evaluate performance (accuracy, precision, recall)
-- Create a confusion matrix
-
-**Bonus**: Try different threshold values and plot ROC curve
+- Evaluate performance with confusion matrix
+- **Bonus**: Try different thresholds and plot ROC curve
 
 ### Challenge 3: Multi-language Pipeline (Advanced)
-Create a complete analysis pipeline:
+Create a complete automated pipeline:
 1. Python: Generate synthetic EEG data with known seizure times
-2. MATLAB: Process and export the data
-3. R: Analyze and visualize
-4. Jupyter: Create a report with all findings
-
-**Bonus**: Add command-line scripts to run the entire pipeline automatically
+2. MATLAB: Process and visualize
+3. R: Analyze, classify, and evaluate
+4. Jupyter: Create report with all findings
+- **Bonus**: Add command-line scripts to run entire pipeline automatically
 
 ---
 
@@ -556,23 +335,11 @@ By the end of Week 00-01, you should be able to:
 - [ ] Load and save data in CSV format
 - [ ] Create visualizations (line plots, histograms, density plots)
 - [ ] Understand sampling rates and signal processing basics
-- [ ] Perform basic data normalization
+- [ ] Perform z-score normalization
 - [ ] Calculate summary statistics
+- [ ] Add ground truth labels to datasets
 - [ ] Use Jupyter notebooks for interactive analysis
-
----
-
-## 🤔 Reflection Questions
-
-Take a moment to think about:
-
-1. **Which programming language felt most comfortable? Why?**
-2. **What surprised you about working with EEG data?**
-3. **How might the concepts from this week apply to other medical signals?**
-   - ECG (heart electrical activity)
-   - EMG (muscle electrical activity)
-   - fMRI (brain imaging)
-4. **What questions do you have about AI in healthcare?**
+- [ ] Work with multi-language data pipelines
 
 ---
 
@@ -586,7 +353,7 @@ Take a moment to think about:
 ### R Resources:
 - [R for Data Science](https://r4ds.had.co.nz/) (Free online)
 - [ggplot2 Documentation](https://ggplot2.tidyverse.org/)
-- [Tidy Data Principles](https://tidyr.tidyverse.org/articles/tidy-data.html)
+- [dplyr Documentation](https://dplyr.tidyverse.org/)
 
 ### MATLAB Resources:
 - [MATLAB Onramp](https://www.mathworks.com/learn/tutorials/matlab-onramp.html) (Free tutorial)
@@ -599,7 +366,6 @@ Take a moment to think about:
 ### Git & GitHub:
 - [Git Tutorial](https://git-scm.com/doc)
 - [GitHub Learning Lab](https://lab.github.com/)
-- [Version Control with Git (Coursera)](https://www.coursera.org/learn/version-control-with-git)
 
 ---
 
@@ -631,17 +397,22 @@ Have questions? Want to share your work? Use the discussion forum!
 
 ## 📝 Tasks
 
-### Task 1: Environment Setup 
+### Task 1: Environment Setup
 - [ ] Install Python, R, and MATLAB (or set up cloud alternatives)
 - [ ] Run all provided scripts successfully
 - [ ] Take screenshots of outputs
 - [ ] Submit a 1-page reflection on the setup process
 
-### Task 2: Code Modification 
-- [ ] Complete Exercises 1-3 (Python)
-- [ ] Complete Exercises 4-5 (MATLAB)
-- [ ] Complete Exercises 6-7 (R)
-- [ ] Complete Exercises 8-9 (Jupyter)
+### Task 2: Complete the EEG Pipeline
+- [ ] Run `MATtoCSV.m` in MATLAB
+- [ ] Run `ExploreEEGData_1152026.R` in R
+- [ ] Review all generated CSV files
+- [ ] Understand each step of the preprocessing pipeline
+
+### Task 3: Code Modifications
+- [ ] Complete Exercise 1 (Python - add BMI column)
+- [ ] Complete Exercise 2 (MATLAB - histogram and stats)
+- [ ] Complete Exercise 3 (R - enhanced analysis)
 
 ---
 
@@ -652,6 +423,9 @@ Have questions? Want to share your work? Use the discussion forum!
 
 **Q: Which language should I focus on?**  
 **A:** All three have their strengths! Python is the most popular for AI/ML, R is excellent for statistics, and MATLAB is powerful for signal processing. Learning all three makes you versatile.
+
+**Q: Why do we use multiple languages?**  
+**A:** In real-world healthcare AI, you'll often work with teams using different tools. MATLAB might be used for signal acquisition, R for statistical analysis, and Python for machine learning. Understanding all three makes you a better collaborator and problem-solver.
 
 **Q: How much time should I spend on this course weekly?**  
 **A:** Plan for 8-10 hours per week: 3 hours of lecture/guided work, 5-7 hours of practice and assignments.
@@ -664,7 +438,7 @@ Have questions? Want to share your work? Use the discussion forum!
 4. Ask in the discussion forum
 5. Come to office hours
 
-**Q: Can I use AI tools like ChatGPT to help with coding?**  
+**Q: Can I use AI tools like ChatGPT or GitHub Copilot to help with coding?**  
 **A:** Yes, with caveats! AI tools can be great for learning, but:
 - Understand the code it generates
 - Don't just copy-paste without learning
@@ -673,7 +447,7 @@ Have questions? Want to share your work? Use the discussion forum!
 
 ---
 
-## 🎓 Final Thoughts
+## 🎓 Professor's Final Thoughts
 
 Welcome to the journey! Healthcare AI is one of the most impactful applications of artificial intelligence today. Every skill you learn in this course can help save lives, improve patient care, and advance medical research.
 
@@ -685,8 +459,8 @@ Remember:
 
 I'm excited to see what you'll create! Let's make this a fantastic semester.
 
-**Prahlad Menon, PhD, PMP**  
-*Office Hours: Scheduled via email *
+**Professor Prahlad Menon, PhD, PMP**  
+*Office Hours: Scheduled via email*  
 *Email: prm44@pitt.edu*
 
 ---
@@ -695,96 +469,4 @@ I'm excited to see what you'll create! Let's make this a fantastic semester.
 
 ---
 
-**🚀 Ready to begin? Start with the scripts in this folder and work through the exercises!**
-
-### Lecture Topics
-- Basic Introduction to Programming in Python, R, and MATLAB
-- Setting Up Development Environments on Google Colab, VS Code, Jupyter Notebook, PositCloud (for R) and MATLAB Online
-- Using Integrated Development Environments (IDEs)
-- Basics of Source Control using Git and GitHub
-
-### Folder Contents
-
-#### `generate_csv.py`
-This Python script generates a CSV file with random data for 20 students, including their age, height, weight, and gender. The data is saved to a file specified by the user.
-
-##### Usage
-```bash
-python generate_csv.py myFile.csv
-```
-
-#### `myFirstNotebook.ipynb`
-This Jupyter Notebook generates a CSV file with random data for 20 students, including their age, height, weight, and gender. The data is saved to 'myFile.csv'.
-
-#### `MATtoCSV.m`
-This MATLAB script processes EEG sleep data and demonstrates basic signal visualization and data export functionality.
-
-##### Key Features:
-- Loads EEG sleep data from a .mat file
-- Creates visualizations of the signal at different sampling frequencies
-- Generates two comparison plots:
-  1. First 1000 data points at full sampling frequency
-  2. Decimated version skipping every 100 points
-- Exports a subset of 10,000 data points to a CSV file
-
-##### Output
-- Generates 's_of_t_subset.csv' containing the first 10,000 data points
-
-#### `ExploreEEGData_1152026.R` ⭐ **NEW!**
-This is the complete R script for EEG data exploration and preprocessing, updated for Spring 2026.
-
-##### Key Features:
-- **Imports and processes** EEG data from CSV (output of MATtoCSV.m)
-- **Creates time axis** based on sampling frequency (500 Hz)
-- **Normalizes signal** using z-score normalization
-- **Adds ground truth labels** for seizure/normal states (seizure occurs after 12 seconds)
-- **Generates visualizations**:
-  - Time series plot of raw EEG signal
-  - Time series plot of normalized signal
-  - Kernel density plots comparing unnormalized vs normalized distributions
-  - Density plot of normalized signal
-
-##### Dependencies
-```r
-library(readr)   # For reading CSV files
-library(dplyr)   # For data manipulation
-```
-
-##### Complete Data Processing Pipeline:
-**Step 1:** Run `MATtoCSV.m` in MATLAB
-- Loads `EEG_sleep.mat` 
-- Exports first 10,000 data points → `s_of_t_subset.csv`
-
-**Step 2:** Run `ExploreEEGData_1152026.R` in R
-1. Reads `s_of_t_subset.csv` 
-2. Creates time column: `time = (row_number - 1) / 500`
-3. Normalizes signal: `normalizedValue = (s - mean(s)) / sd(s)`
-4. Adds ground truth labels: "Seizure" if time > 12s, else "Normal"
-5. Generates multiple visualizations
-6. Exports processed data
-
-##### Output Files:
-- **`s_of_t_subset_withTimeAxis.csv`** - EEG data with time column
-- **`s_of_t_subset_CLEAN.csv`** - Complete processed dataset with:
-  - `value`: Raw signal values
-  - `time`: Time in seconds
-  - `normalizedValue`: Z-score normalized signal
-  - `GT`: Ground truth labels (Seizure/Normal)
-
-##### Usage:
-```r
-# After running MATtoCSV.m in MATLAB:
-source("ExploreEEGData_1152026.R")
-```
-
-#### `loadData.R` (Legacy)
-Earlier version of the R data processing script. Use `ExploreEEGData_1152026.R` for the updated Spring 2026 version.
-
-## Getting Started
-1. Ensure you have Python, R, and MATLAB installed
-2. Install required R packages: readr, dplyr, ggplot2
-3. Clone this repository
-4. Run scripts in the following order:
-   - generate_csv.py (or myFirstNotebook.ipynb)
-   - MATtoCSV.m
-   - loadData.R
+**🚀 Ready to begin? Start with Lecture 1 materials and work through the pipeline step-by-step!**
