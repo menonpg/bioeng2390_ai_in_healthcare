@@ -341,21 +341,28 @@ plot(s_of_t_subset$time, s_of_t_subset$normalizedValue,
 
 ## 🎯 Practice Exercises
 
-### Exercise 1: Modify Python Script (Beginner)
-Add a `bmi` column to the patient data:
-- Formula: BMI = weight (kg) / (height (m))²
-- Hint: height is in cm, divide by 100 first!
+### Exercise 1: Explore the Colab Notebook (Beginner)
+Open and run `Week01_2390_Notebook01.ipynb` in Google Colab:
+- Mount your Google Drive
+- Load the `s_of_t_subset_CLEAN.csv` file
+- Run all cells and observe the visualizations
+- Modify the outlier detection margin parameter (try margin=1.5, 2.5, 3)
+- Compare how many outliers are detected with different margins
 
-### Exercise 2: Explore MATLAB Visualization (Intermediate)
+### Exercise 2: Enhance MATLAB Visualization (Intermediate)
+Modify `MATtoCSV.m` to add more analysis:
 - Create a histogram of the EEG signal values
 - Calculate basic statistics (mean, std, min, max)
-- Export data with time column included
+- Export data with time column included: `[time, signal]`
+- Add a power spectral density plot
 
-### Exercise 3: Enhance R Analysis (Advanced)
+### Exercise 3: Advanced R Analysis (Advanced)
+Extend `ExploreEEGData_1152026.R` with:
 - Calculate rolling statistics (moving window mean and std)
 - Create a simple classifier using amplitude thresholds
 - Calculate accuracy, precision, and recall
-- Plot ROC curve
+- Generate a confusion matrix
+- Plot ROC curve comparing different threshold values
 
 ---
 
@@ -467,10 +474,10 @@ Have questions? Want to share your work? Use the discussion forum!
 - [ ] Review all generated CSV files
 - [ ] Understand each step of the preprocessing pipeline
 
-### Task 3: Code Modifications
-- [ ] Complete Exercise 1 (Python - add BMI column)
-- [ ] Complete Exercise 2 (MATLAB - histogram and stats)
-- [ ] Complete Exercise 3 (R - enhanced analysis)
+### Task 3: Practice Exercises
+- [ ] Complete Exercise 1 (Colab - explore Week01_2390_Notebook01.ipynb)
+- [ ] Complete Exercise 2 (MATLAB - enhance MATtoCSV.m)
+- [ ] Complete Exercise 3 (R - extend ExploreEEGData_1152026.R)
 
 ---
 
