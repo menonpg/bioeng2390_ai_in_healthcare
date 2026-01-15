@@ -115,11 +115,69 @@ library(dplyr)   # For data manipulation
 source("ExploreEEGData_1152026.R")
 ```
 
-#### Step 4: Interactive Exploration (Jupyter)
+#### Step 4: Advanced Analysis & Outlier Detection (Python/Colab) - **Lecture 2 Content** ⭐
+**File:** `Week01_2390_Notebook01.ipynb` **NEW!**
+
+This comprehensive Jupyter/Colab notebook demonstrates advanced data analysis techniques:
+
+**Key Features:**
+- **Google Drive integration** for cloud-based data access
+- **Loads processed EEG data** from R output (`s_of_t_subset_CLEAN.csv`)
+- **Exploratory Data Analysis (EDA):**
+  - DataFrame inspection with `.info()`, `.head()`, `.describe()`
+  - Grouped statistics by GT (Ground Truth) labels
+  - Boxplots comparing Normal vs Seizure states
+- **Outlier Detection:**
+  - IQR (Interquartile Range) method with customizable margin
+  - Separate outlier removal for Normal and Seizure groups
+- **Data Normalization:**
+  - Z-score normalization: `(x - mean) / std`
+  - Min-Max normalization: `(x - min) / (max - min)`
+- **Interactive Visualization:**
+  - Plotly line plots for time series exploration
+  - Seaborn boxplots for distribution comparison
+- **Multi-language Integration:**
+  - Uses `rpy2` to run R code within Python notebook
+  - Demonstrates seamless Python ↔ R interoperability
+
+**Dependencies:**
+```python
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+# For R integration:
+%load_ext rpy2.ipython
+```
+
+**Output Files:**
+- `s_of_t_subset_CLEAN_outliersRemoved.csv` - EEG data with outliers removed from both Normal and Seizure groups
+
+**Usage:**
+```python
+# In Google Colab:
+# 1. Mount Google Drive
+# 2. Run all cells sequentially
+# 3. Explore interactive visualizations
+```
+
+**What You'll Learn:**
+- How to connect Google Colab to Google Drive
+- Advanced pandas data manipulation
+- Statistical outlier detection methods
+- Multiple normalization techniques
+- Creating publication-quality visualizations
+- Running R code from Python notebooks
+
+---
+
+#### Step 5: Basic Interactive Exploration (Jupyter)
 **File:** `myFirstNotebook.ipynb`
-- Interactive Python notebook environment
-- Demonstrates combining code, visualizations, and markdown
-- Can be used to further analyze the processed EEG data
+- Simple interactive Python notebook environment
+- Demonstrates generating synthetic patient data
+- Introduction to pandas DataFrames and CSV export
+- Can be used to practice basic Python concepts
 
 ---
 
