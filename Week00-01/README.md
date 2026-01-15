@@ -7,8 +7,7 @@
 ---
 
 ## 🎯 Welcome to Week 00-01!
-
-Hello and welcome! I'm Professor Prahlad Menon, and I'm thrilled to have you in BIOENG 2390. This first week is all about laying a strong foundation. Think of this as preparing your toolkit before we start building amazing AI applications in healthcare.
+Hello and welcome! I'm thrilled to have you in BIOENG 2390. This first week is all about laying a strong foundation. Think of this as preparing your toolkit before we start building amazing AI applications in healthcare.
 
 ### 📺 Lecture 1 Recording & Notes
 **January 13, 2026 - 81 minutes**
@@ -44,11 +43,6 @@ By the end of this week, you will be able to:
 ---
 
 ## 🎓 Interactive Lesson: Your First Week in AI Healthcare
-
-### Welcome from Professor Menon
-
-**Hello, everyone! Welcome to Week 00-01 of BIOENG 2390.**
-
 This week is all about getting you set up for success. Think of this week as building your toolkit - we're going to set up all the environments and learn the basic programming skills you'll need throughout the semester.
 
 ### 🎯 Learning Objectives
@@ -129,10 +123,7 @@ By the end of this week, you will:
 ## 📖 Interactive Lesson: From Data to Insights
 
 ### Part 1: The Big Picture (5 minutes)
-
-**Professor Menon:** *Hello, everyone! Welcome to Week 00-01. Let me start by asking you a question: What do you think is the most critical skill in AI for Healthcare?*
-
-*[Pause for reflection]*
+**Let me start by asking you a question: What do you think is the most critical skill in AI for Healthcare?*
 
 **Answer:** It's not building the fanciest neural network or knowing every algorithm. It's understanding your data. And to understand data, you need to be able to **generate it, manipulate it, visualize it, and analyze it** across different tools and platforms.
 
