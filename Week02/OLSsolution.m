@@ -7,7 +7,7 @@ b1 = 5;    % Slope =  1/sd
 b0 = 10;   % Y-intercept = -mu/sd
 
 % Calculate y values
-y = b1 * x + b0 + 0.5.*rand([1,100]);  % normalized value 'measurement' with some error 
+y = b1 * x + b0 + 0.8.*rand([1,100]);  % normalized value 'measurement' with some error 
 
 % Plot the results
 plot(x, y, 'r*')
@@ -17,12 +17,11 @@ title('Linear Function: y = 5x + 10')
 grid on
 
 %% Lets fit the b1 and b0 based on the measured y and the actual x
+y = y';
+A = [x', ones([100,1])]
 
-b = y';
-A = [ones([100,1]), x']
+solution = inv(A'*A)*(A'*y)
+%   10.3051 = estimated b0
+%    4.9177 = estimated b1
 
-solution = inv(A'*A)*(A'*b)
-%   10.2388 = estimated b0
-%    5.0007 = estimated b1
-
-solutionInternal = A\b
+solutionInternal = A\y
