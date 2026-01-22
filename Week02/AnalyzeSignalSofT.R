@@ -11,6 +11,12 @@ s_of_t_subset_CLEAN <- read_csv("s_of_t_subset_CLEAN.csv",
 )
 View(s_of_t_subset_CLEAN)
 
+# Plot the data
+plot(s_of_t_subset_CLEAN$time, s_of_t_subset_CLEAN$value,
+        main = "EEG Signal Depicting Seizure",
+        xlab = "Time (seconds)", ylab = "Signal (s)", type = "l"
+)
+
 ## Create a box plot of the signal for eachh cclass of the GT column using base R
 boxplot(s_of_t_subset_CLEAN$normalizedValue ~ s_of_t_subset_CLEAN$GT,
         xlab = "Class", ylab = "Signal",
@@ -66,7 +72,7 @@ s_of_t_subset_CLEAN_out_of_control <- s_of_t_subset_CLEAN_out_of_control[s_of_t_
 points(s_of_t_subset_CLEAN_out_of_control$time, s_of_t_subset_CLEAN_out_of_control$normalizedValue, col = "red", pch = 8)
 
 # Lets put the 2 SD rule signal into the main data frame
-s_of_t_subset_CLEAN$OneSDRule <- as.factor(ifelse(s_of_t_subset_CLEAN$normalizedValue > 1 |
+s_of_t_subset_CLEAN$TwoSDRule <- as.factor(ifelse(s_of_t_subset_CLEAN$normalizedValue > 1 |
         s_of_t_subset_CLEAN$normalizedValue < -1, "OutOfControl", "InControl"))
 
-table(s_of_t_subset_CLEAN$GT, s_of_t_subset_CLEAN$OneSDRule)
+table(s_of_t_subset_CLEAN$GT, s_of_t_subset_CLEAN$TwoSDRule)
