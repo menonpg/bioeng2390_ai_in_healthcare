@@ -617,9 +617,6 @@ This week represents a critical transition in your understanding of AI in health
 4. **Matrix algebra enables solutions** - OLS derivation powers regression
 5. **Feature choice is critical** - single amplitude failed, need frequency
 
-**Professor's Closing Thought:**
-> "I know this is a little bit complicated, getting into the weeds of this, but linear regression and logistic regression are your basic regression and classification models that we really need to understand through and through."
-
 Remember: In healthcare AI, the goal isn't just to build models - it's to build models that **make sense** clinically and can be **trusted** by medical professionals.
 
 **Professor Prahlad Menon, PhD, PMP**  
