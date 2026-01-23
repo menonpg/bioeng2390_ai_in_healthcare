@@ -33,15 +33,25 @@ This week we transition from basic signal processing to **feature engineering** 
 
 ---
 
-### Lecture 4 - January 22, 2026
-**Focus:** Statistical Process Control & Linear Regression
+### Lecture 4 - January 22, 2026 (86 minutes)
+**Focus:** Confusion Matrices, Regression Theory & OLS Derivation
 
-**Planned Topics:**
-- 2SD and 1SD control rules for signal analysis
-- Identifying in-control vs out-of-control signal periods
-- Building first regression models
-- Ordinary Least Squares (OLS) derivation with matrix algebra
-- Fitting linear models in R and MATLAB
+- **[Watch Recording](https://fathom.video/share/otwZPqGCaqtb7yxzfrsbZ3DYK47agk5A)**
+- **[Read Detailed Lecture Notes](Lecture04_Notes_Jan22_2026.md)** ← Complete transcript with all concepts
+
+**Topics Covered:**
+- Confusion matrices: TP, TN, FP, FN definitions and interpretation
+- Performance metrics: Sensitivity, specificity, precision, accuracy
+- 2SD vs 1SD control rules and threshold selection
+- Sensitivity-precision tradeoff (COVID test analogy)
+- Linear regression theory and matrix algebra
+- OLS derivation: β = (AᵀA)⁻¹AᵀY
+- Implementation in R (`lm` function) and MATLAB (matrix operations)
+- Introduction to logistic regression with GLM
+- Why single amplitude features fail for seizure detection
+
+**Key Finding:**
+> "Logistic regression using only normalizedValue as predictor has p=0.931 - NOT significant. This confirms we need frequency-domain features from windowed analysis!"
 
 ---
 
