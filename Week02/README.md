@@ -213,29 +213,83 @@ lines(density(s_of_t_subset_CLEAN$normalizedValue[s_of_t_subset_CLEAN$GT == "Sei
 
 ---
 
-#### 3. `linearRegressionFit.R`
-**Linear regression modeling (Thursday's topic)**
+#### 3. `linearRegressionFit.R` 🌟
+**Linear regression modeling (Thursday's lecture)**
+
+Demonstrates linear regression in R using the `lm()` function:
 
 ```r
-# Fit linear regression model
+# Fit linear model: normalizedValue ~ value
 model <- lm(normalizedValue ~ value, data = s_of_t_subset_CLEAN)
 summary(model)
 ```
 
-Fits a simple linear model to predict normalized values from raw values. We'll explore this Thursday along with the mathematical derivation.
+**Results from Thursday's Class:**
+```
+Coefficients:
+              Estimate    Std. Error  Pr(>|t|)    
+(Intercept)  -0.063866   0.001369    < 2e-16 ***
+value         0.014400   0.000031    < 2e-16 ***
+
+R-squared: 1.000
+```
+
+**Interpretation:**
+- **β₁ = 0.0144** = 1/σ → **σ = 69.44** (standard deviation)
+- **β₀ = -0.0639** = -μ/σ → **μ = 4.44** (mean)
+- **Perfect fit** (R² = 1.0) because normalization IS a linear transformation!
+
+**Part 2: Logistic Regression (Thursday's content)**
+```r
+# Create binary indicator
+s_of_t_subset_CLEAN$GT_binary <- ifelse(s_of_t_subset_CLEAN$GT == "Seizure", 1, 0)
+
+# Fit logistic model
+logit_model <- glm(GT_binary ~ normalizedValue,
+                   data = s_of_t_subset_CLEAN,
+                   family = binomial(link = "logit"))
+summary(logit_model)
+```
+
+**Results:**
+- **normalizedValue coefficient**: p = 0.931 (**NOT significant**)
+- **Conclusion**: Single amplitude values cannot predict seizure state
+- **Reinforces Tuesday's finding**: Need frequency features!
 
 ---
 
-#### 4. `OLSsolution.m`
-**Ordinary Least Squares derivation in MATLAB (Thursday's topic)**
+#### 4. `OLSsolution.m` 🌟
+**Ordinary Least Squares derivation in MATLAB (Thursday's lecture)**
 
-Demonstrates the matrix algebra approach to linear regression:
-- Generate synthetic data
-- Define linear model: `y = β₀ + β₁x`
-- Solve using OLS: `β = (XᵀX)⁻¹Xᵀy`
-- Compare estimated vs true parameters
+Demonstrates the matrix algebra approach to linear regression with simulated noisy data:
 
-This will connect to our R models on Thursday.
+```matlab
+% True parameters
+beta1 = 5;
+beta0 = 10;
+
+% Generate data with noise
+X = linspace(0, 1, 100);
+Y = beta1*X + beta0 + (rand(size(X))-0.5)*100;
+
+% Matrix formulation
+Y = Y';
+A = [ones(100,1), X'];
+
+% OLS Solution (two methods)
+beta_formula = inv(A'*A)*A'*Y;    % β = (AᵀA)⁻¹AᵀY
+beta_builtin = A\Y;                % MATLAB backslash operator
+
+disp(beta_formula);  % [β₀; β₁] ≈ [10; 5]
+```
+
+**Results (example run):**
+- Estimated: β₀ ≈ 10.31, β₁ ≈ 4.92
+- True values: β₀ = 10, β₁ = 5
+- **Close despite noise!**
+
+**Key Lesson:**
+> "As long as noise is well-behaved (normally distributed), you can recover parameters close to true values using OLS."
 
 ---
 
@@ -404,37 +458,88 @@ The fundamental discovery from Tuesday:
 
 ---
 
-## 🧠 Thursday Preview: Statistical Process Control
+## 🔬 Key Concepts from Thursday
 
-### What We'll Cover:
+### 1. Confusion Matrix Analysis
 
-**1. Control Charts**
-- Mean ± 2 SD bounds (95% confidence)
-- Mean ± 1 SD bounds (68% confidence)
-- Identifying out-of-control points
+**Visual Example from Lecture:**
+- Red dots = Out-of-control (predicted seizure)
+- Black dots = In-control (predicted normal)
+- Before 12s = Actually normal
+- After 12s = Actually seizure
 
-**2. Signal Classification**
-- In-control: within 2 SD
-- Out-of-control: beyond 2 SD
-- Pattern detection: runs, trends
+**Confusion Matrix (2-Sigma Rule):**
+```
+                    ACTUAL
+              Normal    Seizure
+PREDICTED  
+In-Control   5,984     3,220    (TN)  (FN)
+Out-Control     17       779    (FP)  (TP)
+```
 
-**3. Linear Regression**
-- OLS mathematical derivation
-- Matrix algebra approach: β = (XᵀX)⁻¹Xᵀy
-- Implementing in R and MATLAB
-- Interpreting coefficients
+**Performance Metrics:**
+- **Sensitivity (Recall)**: 19.48% - Catching only 1 in 5 seizures!
+- **Specificity**: 99.72% - Rarely false alarms
+- **Precision (PPV)**: 97.86% - When we predict seizure, usually correct
+- **NPV**: 65.00% - Many false negatives
+- **Accuracy**: 67.63% - Overall correct rate
 
-**4. Model Building**
-- Fitting models to EEG data
-- Prediction vs actual values
-- Residual analysis
-- Model diagnostics
+### 2. The Sensitivity-Precision Tradeoff
 
-### Prepare by:
-- Completing Assignment 0
-- Reviewing the t-test/Wilcoxon results
-- Understanding why means don't differ but shapes do
-- Thinking about what "in-control" means for brain signals
+**1-Sigma Rule Results:**
+- Sensitivity: ↑ 39% (up from 19%)
+- Precision: ↓ (more false alarms)
+- **Use case dependent!**
+
+**COVID Test Analogy:**
+> "Would you rather miss infected people (false negatives) or quarantine healthy people (false positives)?"
+
+**Answer:** Decrease sigma → Increase sensitivity → Accept more false positives
+
+### 3. Linear Regression via Matrix Algebra
+
+**The Transformation:**
+```
+normalizedValue = (value - μ) / σ
+Y = (1/σ)·X - (μ/σ)
+Y = β₁·X + β₀
+```
+
+Where β₁ = 1/σ and β₀ = -μ/σ
+
+**Matrix Formulation:**
+```
+⎡Y₁⎤   ⎡X₁  1⎤   ⎡β₁⎤
+⎢Y₂⎥ = ⎢X₂  1⎥ · ⎢β₀⎥
+⎣Yₙ⎦   ⎣Xₙ  1⎦   ⎣  ⎦
+
+Y = A·β
+```
+
+**OLS Solution:**
+```
+β = (AᵀA)⁻¹AᵀY
+```
+
+**From R Results:**
+- β₁ = 0.0144 → σ = 69.44
+- β₀ = -0.0639 → μ = 4.44
+- R² = 1.000 (perfect fit!)
+
+### 4. Classification vs Regression
+
+**Regression:**
+- Continuous response (normalized value)
+- Method: `lm()` in R
+- Perfect fit for normalization (R²=1.0)
+
+**Classification:**
+- Categorical response (Normal/Seizure)
+- Method: `glm()` with logit link
+- **Failed** for single amplitude (p=0.931)
+- **Why?** Means are identical between classes!
+
+**The Solution:** Frequency features from Tuesday's windowed analysis!
 
 ---
 
@@ -495,17 +600,27 @@ Different neurological events (like seizures) show characteristic patterns in th
 
 ## 🎓 Professor's Notes
 
-This week represents a critical transition in your understanding of AI in healthcare. We're moving beyond simple signal viewing to **feature extraction** - the art and science of transforming raw data into meaningful representations for machine learning.
+This week represents a critical transition in your understanding of AI in healthcare. We're moving beyond simple signal viewing to **feature extraction** and **regression modeling** - the foundations of all machine learning.
 
-Key takeaways from Tuesday:
+**Week 02 Key Takeaways:**
+
+**From Tuesday:**
 1. **Visual inspection isn't enough** - we need quantitative features
 2. **Simple statistics can mislead** - mean values were identical!
 3. **Domain knowledge matters** - EEG frequency bands aren't arbitrary
-4. **The right features make all the difference** - this sets up next week's classification
+4. **Frequency features reveal hidden patterns** - spectrograms show the difference
+
+**From Thursday:**
+1. **Confusion matrices organize predictions** - TP, TN, FP, FN framework
+2. **Metrics tell different stories** - sensitivity vs precision vs accuracy
+3. **Context determines "good"** - COVID test needs high sensitivity
+4. **Matrix algebra enables solutions** - OLS derivation powers regression
+5. **Feature choice is critical** - single amplitude failed, need frequency
+
+**Professor's Closing Thought:**
+> "I know this is a little bit complicated, getting into the weeds of this, but linear regression and logistic regression are your basic regression and classification models that we really need to understand through and through."
 
 Remember: In healthcare AI, the goal isn't just to build models - it's to build models that **make sense** clinically and can be **trusted** by medical professionals.
-
-See you Thursday for control charts and regression!
 
 **Professor Prahlad Menon, PhD, PMP**  
 *Office Hours: By appointment*  
@@ -513,18 +628,36 @@ See you Thursday for control charts and regression!
 
 ---
 
-*"Feature engineering is the art of asking: What patterns in this data actually matter for the question I'm trying to answer?"*
+*"The appropriate threshold for a given statistical test is greatly a function of the purpose of that test."*
 
 ---
 
-## 📋 Tuesday Checklist
+## 📋 Week 02 Completion Checklist
 
-- [ ] Clone/pull Week 02 content from GitHub
-- [ ] Run `ReadMAT_ConvertToSignalvsTime_EngineerWINDOWEDFeatures.ipynb`
-- [ ] Understand spectrogram visualization
-- [ ] Run first half of `AnalyzeSignalSofT.R`
-- [ ] Understand t-test vs Wilcoxon results
-- [ ] Start Assignment 0
-- [ ] Review EEG frequency bands
+- [ ] Clone/pull Week 02 content from GitHub (`git pull`)
+- [ ] Watch both lecture recordings (Tuesday + Thursday)
+- [ ] Run `ReadMAT_ConvertToSignalvsTime_EngineerWINDOWEDFeatures.ipynb` in Colab
+- [ ] Run complete `AnalyzeSignalSofT.R` in R/Posit Cloud
+- [ ] Run `linearRegressionFit.R` and verify coefficients
+- [ ] Run `OLSsolution.m` in MATLAB Online
+- [ ] Understand confusion matrix metrics (TP, TN, FP, FN)
+- [ ] Understand sensitivity vs precision tradeoff
+- [ ] Complete Assignment 0 (EEG_sleep.mat adaptation)
+- [ ] Review OLS derivation: β = (AᵀA)⁻¹AᵀY
 
-**Ready for Thursday?** Make sure you understand why frequency features are needed before we build models!
+---
+
+## 🎬 Next Week Preview: Week 03
+
+**Tuesday, January 27, 2026:**
+- Using frequency features for classification
+- Building classification models with multiple predictors
+- Logistic regression deep dive (logit link function explained)
+- ROC curves and threshold optimization
+- Feature importance and selection
+
+**Get ready to finally build a good seizure detector using the frequency features from Week 02!**
+
+---
+
+**Have a great weekend! Work on Assignment 0 and review this week's concepts. See you Tuesday!** 🚀
