@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles [ \"/content/segments_df_frequency_features.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "setupParse source_frames: [ \"nfs://content/segments_df_frequency_features.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "parseFiles\n  source_frames: [\"nfs://content/segments_df_frequency_features.csv\"]\n  destination_frame: \"segments_df_frequency_features.hex\"\n  parse_type: \"CSV\"\n  separator: 44\n  number_columns: 5\n  single_quotes: false\n  column_names: [\"delta\",\"theta\",\"alpha\",\"beta\",\"seizure\"]\n  column_types: [\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Enum\"]\n  delete_on_done: true\n  check_header: 1\n  chunk_size: 4194304\n  escapechar: undefined"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"segments_df_frequency_features.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "getColumnSummary \"segments_df_frequency_features.hex\", \"delta\""
+    },
+    {
+      "type": "cs",
+      "input": "assist splitFrame, \"segments_df_frequency_features.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "splitFrame \"segments_df_frequency_features.hex\", [0.75], [\"frame_0.750\",\"frame_0.250\"], 672026"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"frame_0.750\""
+    },
+    {
+      "type": "cs",
+      "input": "assist runAutoML, training_frame: \"frame_0.750\""
+    },
+    {
+      "type": "cs",
+      "input": "runAutoML {\"input_spec\":{\"training_frame\":\"frame_0.750\",\"response_column\":\"seizure\",\"validation_frame\":\"frame_0.250\",\"blending_frame\":\"segments_df_frequency_features.hex\",\"leaderboard_frame\":\"frame_0.250\",\"ignored_columns\":[],\"sort_metric\":\"AUTO\"},\"build_control\":{\"distribution\":\"AUTO\",\"nfolds\":5,\"balance_classes\":false,\"stopping_criteria\":{\"seed\":-1,\"max_models\":0,\"max_runtime_secs\":0,\"max_runtime_secs_per_model\":360,\"stopping_rounds\":3,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":-1},\"keep_cross_validation_predictions\":true,\"keep_cross_validation_models\":true,\"keep_cross_validation_fold_assignment\":false,\"export_checkpoints_dir\":\"/content/models/\"},\"build_models\":{\"exclude_algos\":[\"DeepLearning\"],\"exploitation_ratio\":-1,\"monotone_constraints\":[]}}, 'exec'"
+    },
+    {
+      "type": "cs",
+      "input": "getLeaderboard \"AutoML_1_20260127_235413@@seizure\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"StackedEnsemble_BestOfFamily_5_AutoML_1_20260127_235413\""
+    },
+    {
+      "type": "cs",
+      "input": "getModels"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"metalearner_gbm_StackedEnsemble_BestOfFamily_5_AutoML_1_20260127_235413\""
+    }
+  ]
+}
