@@ -40,16 +40,31 @@ This week we transition from feature engineering to **automated model building**
 
 ---
 
-### Lecture 6 - January 29, 2026
-**Focus:** ROC Curves, Logistic Regression Math & Cross-Validation
+### Lecture 6 - January 29, 2026 (89 minutes)
+**Focus:** Logistic Regression Derivation, ROC Curves & Threshold Optimization
 
-**Planned Topics:**
-- Deriving the logit link function
-- Understanding log-odds and probabilities
-- ROC curves and AUC interpretation
-- Threshold selection strategies
-- K-fold cross-validation explained
-- Model evaluation beyond accuracy
+- **[Watch Recording](https://fathom.video/share/xTNg5omfgG1KEP6erJbD7zZcQBTFxQn9)**
+- **[Read Detailed Lecture Notes](Lecture06_Notes_Jan29_2026.md)** ← Complete derivation and concepts
+
+**Topics Covered:**
+- Complete log-odds derivation: ln(P/(1-P)) = β₀ + Σβᵢ·Xᵢ
+- Understanding sigmoid function as activation/transfer function
+- ROC curves: plotting TPR vs FPR across all thresholds
+- AUC interpretation (GLM achieved 0.81)
+- Train/Validation/Test split (70/20/10) strategy
+- Optimal threshold selection from validation set (0.56-0.58)
+- Building GLM with feature interactions in H2O
+- Variable importance: Alpha > Theta > Interactions > Beta > Delta
+- Making predictions on test data
+- IID assumption and why random splits are valid
+
+**Key Mathematics:**
+> "We transformed the probability problem into log-odds so we could use OLS from Week 02 to solve it. Then we convert back to probabilities using the sigmoid function!"
+
+**Threshold Results:**
+- Training: 0.61, Validation: 0.56, Cross-Val: 0.58
+- **Chosen:** 0.57-0.58 for optimal balance
+- Test performance: TPR=1.0 (perfect sensitivity!), FPR=0.54
 
 ---
 
@@ -411,40 +426,99 @@ output.serve_kernel_port_as_window(54321)
 
 ---
 
-## 🎬 Thursday Preview
+## 🔬 Key Concepts from Thursday
 
-### Topics for January 29:
+### 1. **Logistic Regression Mathematics**
 
-**1. Logistic Regression Mathematics**
-- Deriving the logit link function
-- Understanding log-odds: `log(p/(1-p)) = β₀ + β₁X`
-- Why linear regression fails for binary outcomes
-- Connecting to Week 02's OLS derivation
+**Complete Log-Odds Derivation:**
+```
+Start:  P(Y=1) = 1 / (1 + e^(-(β₀ + Σβᵢ·Xᵢ)))
+Step 1: 1/P = 1 + e^(-(β₀ + Σβᵢ·Xᵢ))
+Step 2: e^(-(β₀ + Σβᵢ·Xᵢ)) = (1-P)/P
+Step 3: -(β₀ + Σβᵢ·Xᵢ) = ln((1-P)/P)
+Final:  ln(P/(1-P)) = β₀ + Σβᵢ·Xᵢ  ← Log-odds!
+```
 
-**2. ROC Curves Explained**
-- What is TPR vs FPR?
-- How to read ROC curves
-- Why AUC = area under ROC curve
-- Selecting optimal probability thresholds
-- Sensitivity-specificity tradeoff revisited
+**Why this matters:**
+- Left side = log-odds (continuous variable we can model)
+- Right side = linear combination (we can solve with OLS!)
+- **Connects to Week 02's matrix algebra**
 
-**3. Cross-Validation Deep Dive**
-- K-fold CV step-by-step
-- Why we need CV (overfitting detection)
-- Interpreting CV standard deviations
-- When to trust model performance
+**From Probability to Prediction:**
+1. Solve for β using log-odds transformation
+2. Compute P(Y=1) using sigmoid: `1 / (1 + e^(-(β₀ + Σβᵢ·Xᵢ)))`
+3. Apply threshold to get binary decision
 
-**4. Model Interpretability**
-- Understanding GLM coefficients
-- Variable importance plots
-- Partial dependence plots (if time permits)
-- Making model predictions actionable
+### 2. **ROC Curves & Optimal Thresholds**
 
-### Prepare by:
-- Completing Assignment 0
-- Running H2O AutoML yourself
-- Reviewing Week 02 confusion matrix concepts
-- Thinking about: What does "probability of seizure" mean clinically?
+**ROC Curve:**
+- X-axis: False Positive Rate (FPR)
+- Y-axis: True Positive Rate (TPR) = Sensitivity
+- Each point = different probability threshold
+- AUC = Area under this curve
+
+**Our GLM Results:**
+- Training AUC: 0.81
+- Validation AUC: 0.81
+- Cross-validation AUC: 0.81
+- **Optimal thresholds:** Train=0.61, Validation=0.56, CV=0.58
+
+**Selected threshold:** 0.57-0.58 (from validation/CV)
+
+**Test set performance at threshold=0.57:**
+- TPR = 1.0 (catching all seizures!)
+- FPR = 0.54 (some false alarms, but acceptable)
+
+### 3. **Train/Validation/Test Strategy**
+
+**70/20/10 Split:**
+- **Training (70%):** Learn β coefficients
+- **Validation (20%):** Optimize threshold/operating point
+- **Test (10%):** Final unbiased evaluation
+
+**Why three splits?**
+> "Train the model, use validation to find optimal threshold, then apply both to test set for true out-of-sample performance."
+
+### 4. **IID Assumption**
+
+**Question:** Does H2O respect temporal nature of samples?
+
+**Answer:** No, assumes windows are IID (Independent and Identically Distributed)
+
+**Why this works:**
+- Time already handled in feature engineering (windowing)
+- Each window is independent observation of brain state
+- Random shuffling into train/val/test is valid
+- **Different from time-series forecasting!**
+
+### 5. **Feature Interactions in GLM**
+
+**With interactions enabled:**
+- H2O creates: delta×theta, theta×alpha, alpha×beta, etc.
+- Captures combined effects
+- Example: Low Alpha AND Low Beta together → stronger indicator
+
+**Thursday's results:**
+- Alpha × Alpha interaction was important
+- Main effects still dominated (Alpha, Theta, Beta)
+- Interactions provided marginal improvement
+
+### 6. **Cross-Validation Explained**
+
+**5-Fold CV:**
+- Split training data into 5 equal parts
+- Train on 4 folds → Validate on 1 fold
+- Repeat 5 times (different validation fold each time)
+- Average results
+
+**Purpose:**
+- Detect overfitting
+- Check data sensitivity
+- Get robust performance estimate
+- **Science needs generalization, not lucky patterns!**
+
+**Professor's Stock Market Example:**
+> "I made a model in 2016 that worked for a year then failed. It learned a special pattern from one fold. Science needs patterns that work across ALL folds."
 
 ---
 
@@ -589,32 +663,66 @@ Week 03 Tuesday, **we succeeded!** Using Beta and Alpha frequency features, we b
 **For Thursday:**
 > "We're going to talk about log-odds and derive this thing. We're going to talk about how to understand ROC curves. Finally, we'll talk about cross-validation in a very deliberate way. Understanding what the model has learned and how best to use it and operationalize it - these are the things we will learn."
 
+**Week 03 Key Takeaways:**
+
+**From Tuesday:**
+1. Frequency features (Beta, Alpha) are highly significant (p < 10⁻¹³)
+2. H2O AutoML builds multiple models automatically
+3. Stacked Ensemble achieved AUC ≈ 1.0 (near perfect!)
+4. Windowing with 50% overlap is standard practice
+
+**From Thursday:**
+1. Log-odds transformation enables us to use OLS for classification
+2. Sigmoid function converts linear predictions → probabilities
+3. ROC curves show performance across all thresholds
+4. Validation set determines optimal operating point (0.57-0.58)
+5. IID assumption justifies random train/val/test splits
+6. Cross-validation detects overfitting and ensures generalization
+
+**Professor's Final Thought:**
+> "Understanding the math helps you use it correctly. It's not just clicking buttons - it's understanding what those buttons do mathematically!"
+
 **Professor Prahlad Menon, PhD, PMP**  
 *Office Hours: By appointment*  
 *Email: prm44@pitt.edu*
 
 ---
 
-*"Linear models are interpretable. Non-linear models perform better. Ensembles give us the best of both worlds."*
+*"Understanding what the model has learned and how best to use it and operationalize it - these are the things we will learn."*
 
 ---
 
-## 📋 Week 03 Tuesday Checklist
+## 📋 Week 03 Completion Checklist
 
 - [ ] `git pull` to get Week 03 content
-- [ ] Run `Process_session4_train_2018.ipynb` in Colab
-- [ ] Install H2O: `!pip install h2o`
-- [ ] Initialize H2O and access Flow UI
-- [ ] Import frequency features CSV
-- [ ] Run AutoML with 5-fold CV
-- [ ] Examine leaderboard and compare models
-- [ ] Review variable importance from GLM
-- [ ] Understand why Beta and Alpha are strongest
-- [ ] Complete Assignment 0 (if not done)
-- [ ] Save H2O models to Google Drive
-
-**Ready for Thursday?** Review confusion matrices and think about probability thresholds!
+- [ ] Watch both lecture recordings (Tuesday + Thursday)
+- [ ] Run `Process_session4_train_2018.ipynb` completely
+- [ ] Install and configure H2O in Colab
+- [ ] Access H2O Flow UI successfully
+- [ ] Build GLM with feature interactions
+- [ ] Understand log-odds derivation
+- [ ] Interpret ROC curves and select optimal threshold
+- [ ] Understand train/validation/test split strategy
+- [ ] Complete Assignment 0 (even with solution available)
+- [ ] Complete Assignment 1 (feature engineering)
+- [ ] Complete Assignment 2 (H2O classification)
+- [ ] Write reports for all assignments
 
 ---
 
-**Have a great week! See you Thursday for ROC curves and the math behind logistic regression!** 🚀
+## 🎬 Next Week Preview: Week 04
+
+**Topics:**
+- Dimensionality reduction (PCA, LDA)
+- Visualizing high-dimensional feature spaces
+- Feature selection vs feature extraction
+- Competition dataset introduction
+- Advanced ensemble methods
+
+**Assignments:**
+- Assignment 3: Will involve dimensionality reduction
+- Ongoing: Assignments 0, 1, 2 (if not completed)
+
+---
+
+**Have a great weekend! Work on Assignments 0, 1, and 2! See you next week for dimensionality reduction!** 🚀
