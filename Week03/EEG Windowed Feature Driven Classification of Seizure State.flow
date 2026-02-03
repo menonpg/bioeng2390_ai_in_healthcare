@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "getFrames"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"eeg_segments.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "assist splitFrame, \"eeg_segments.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "splitFrame \"eeg_segments.hex\", [0.7,0.2], [\"training_0.70\",\"validation_0.20\",\"test_0.10\"], 689576"
+    },
+    {
+      "type": "cs",
+      "input": "getFrames"
+    },
+    {
+      "type": "cs",
+      "input": "buildModel \"glm\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'glm', {\"model_id\":\"glm01\",\"training_frame\":\"train_data\",\"validation_frame\":\"valid_data\",\"nfolds\":5,\"seed\":-1,\"response_column\":\"seizure\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"family\":\"AUTO\",\"solver\":\"AUTO\",\"alpha\":[],\"lambda\":[],\"lambda_search\":false,\"standardize\":true,\"non_negative\":false,\"startval\":[],\"calc_like\":false,\"cold_start\":false,\"obj_reg\":-1,\"export_checkpoints_dir\":\"/content/models/\",\"fold_assignment\":\"AUTO\",\"score_each_iteration\":false,\"score_iteration_interval\":-1,\"compute_p_values\":true,\"dispersion_parameter_method\":\"pearson\",\"remove_collinear_columns\":false,\"max_iterations\":-1,\"link\":\"family_default\",\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":360,\"generate_scoring_history\":false,\"auc_type\":\"AUTO\",\"dispersion_epsilon\":0.0001,\"tweedie_epsilon\":8e-17,\"max_iterations_dispersion\":3000,\"fix_tweedie_variance_power\":true,\"gainslift_bins\":-1,\"init_optimal_glm\":false,\"separate_linear_beta\":false,\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"missing_values_handling\":\"MeanImputation\",\"init_dispersion_parameter\":1,\"intercept\":true,\"objective_epsilon\":-1,\"beta_epsilon\":0.0001,\"gradient_epsilon\":-1,\"prior\":-1,\"max_active_predictors\":-1,\"interactions\":[\"delta\",\"theta\",\"alpha\",\"beta\"],\"interaction_pairs\":[],\"control_variables\":[],\"build_null_model\":false,\"fix_dispersion_parameter\":false,\"generate_variable_inflation_factors\":false,\"dispersion_learning_rate\":0.5,\"constraint_eta0\":0.1258925,\"constraint_tau\":10,\"constraint_alpha\":0.1,\"constraint_beta\":0.9,\"constraint_c0\":10}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"glm01\""
+    },
+    {
+      "type": "cs",
+      "input": "exportModel \"glm01\""
+    },
+    {
+      "type": "cs",
+      "input": "exportModel \"glm01\", \"/content/glm01\", overwrite: false, format: \"bin\""
+    }
+  ]
+}
