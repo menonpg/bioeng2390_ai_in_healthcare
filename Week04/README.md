@@ -42,14 +42,33 @@ This week we move from model building to **model deployment** and **advanced eva
 
 ---
 
-### Lecture 8 - February 5, 2026
-**Focus:** TBD
+### Lecture 8 - February 5, 2026 (88 minutes)
+**Focus:** Overfitting, Cross-Validation & Non-Linear Models
 
-**Planned Topics:**
-- Building models programmatically (H2O Python API)
-- F1 and F2 score mathematics
-- K-Nearest Neighbors in R
-- Model evaluation beyond AUC
+- **[Watch Recording](https://fathom.video/share/wzY-sAzurZDhzdxsUjG-j6uojkkC3pJw)**
+- **[Read Detailed Lecture Notes](Lecture08_Notes_Feb05_2026.md)** ← Complete concepts with whiteboard explanations
+
+**Topics Covered:**
+- Cross-validation deep dive: 3-fold, 5-fold, leave-one-out (LOO-CV)
+- Overfitting vs underfitting with visual examples
+- Curse of dimensionality: N observations > P parameters rule
+- Variance inflation and feature independence (pizza analogy!)
+- Non-linearity from features vs model complexity
+- TensorFlow Playground demonstrations (spiral, circular, blob patterns)
+- Forward pass/inference examples: LLMs, avatars, text-to-speech
+- ROC curves from ANY continuous variable (not just probabilities)
+- LazyPredict for quick model competitions
+- K-Nearest Neighbors (KNN) introduction
+
+**Key Discoveries:**
+> "If you torture the data enough, it will confess to anything." (on overfitting)
+
+> "ROC curves aren't just for probabilities - you can threshold ANY continuous variable and create an ROC curve!"
+
+**LazyPredict Results:**
+- KNN: AUC = 0.73 (best non-linear)
+- Logistic Regression: AUC = 0.66 (linear baseline)
+- **Conclusion:** Our seizure problem is non-linear!
 
 ---
 
@@ -604,19 +623,123 @@ model.predict(features[t]) → seizure[t+k]
 
 ---
 
-## 🎬 Next Class Preview
+## 🔬 Key Concepts from Thursday
 
-**Thursday, February 5:**
-- Building models with H2O Python API (no AutoML)
-- F1/F2 score derivations
-- K-Nearest Neighbors in R
-- Comparing linear vs non-linear performance
+### 1. **Cross-Validation Deep Dive**
 
-**Prepare by:**
-- Completing all pending assignments
-- Understanding ROC curves deeply
-- Thinking about non-linear decision boundaries
+**Textbook Analogy:**
+> "If you wanted to ensure every textbook teaches Newton's Laws the same way, would you test 3 or 5 textbooks? More tests = more confidence the knowledge is consistent!"
+
+**K-Fold Cross-Validation:**
+- **3-Fold:** 3 models, 3 trials
+- **5-Fold:** 5 models, 5 trials (more robust)
+- **Leave-One-Out:** N models, N trials (best but expensive)
+
+**Purpose:** Verify model learns generalizable patterns, not data-specific quirks
+
+### 2. **Overfitting vs Underfitting**
+
+**Overfitting (Model Too Complex):**
+- Training performance: Excellent
+- Test performance: Poor
+- **Causes:**
+  - Too many parameters (P > N observations)
+  - Too many features (M > N observations)
+  - Too complex model for simple pattern
+- **Visual:** Squiggly boundary with disconnected "islands"
+
+**Good Fit:**
+- Training ≈ Test performance
+- **Sweet spot:** Right complexity for data
+- **Visual:** Smooth boundary capturing true pattern
+
+**Underfitting (Model Too Simple):**
+- Training performance: Poor
+- Test performance: Poor
+- **Cause:** Linear model for non-linear pattern
+- **Visual:** Straight line through curved data
+
+**Rule:** N (observations) > P (parameters) > M (features)
+
+### 3. **Variance Pizza Analogy** 🍕
+
+**Goal:** Explain all variance in Y (response)
+
+**Good Features (Independent):**
+- X₁ explains slices A, B, C
+- X₂ explains slices D, E, F
+- X₃ explains slices G, H
+- **Result:** Full pizza covered, no overlap ✓
+
+**Bad Features (Variance Inflation):**
+- X₁ explains slices A, B, C, D
+- X₂ explains slices C, D, E, F
+- **Problem:** Slices C,D counted twice (inflated)
+- **Problem:** Slices G,H unexplained
+- **Solution:** Remove redundant feature
+
+### 4. **Non-Linearity: Two Approaches**
+
+**Via Feature Engineering:**
+- Add X₁², X₂², sin(X₁), etc.
+- Linear model can capture curved boundaries
+- **We did this with frequency features!**
+
+**Via Model Complexity:**
+- Neural networks with multiple neurons
+- Each neuron learns piece of boundary
+- **TensorFlow Playground:** 4 neurons = spiral
+
+**Lesson:** Feature engineering + simple model often beats simple features + complex model!
+
+### 5. **Forward Pass Examples**
+
+**What is Inference?**
+- Using pre-trained model
+- No learning/training
+- Just predictions
+
+**Professor's Examples:**
+- **ChatGPT:** Forward pass on every query
+- **Text-to-Speech:** Qwen3-TTS model
+- **Virtual CFI:** Chained models (speech→text→LLM→TTS→avatar)
+
+### 6. **LazyPredict Results**
+
+**Quick Model Competition:**
+```
+KNN:                    AUC = 0.73 ⭐ (best)
+Random Forest:          AUC = 0.71
+SVC:                    AUC = 0.70
+Logistic Regression:    AUC = 0.66 (baseline)
+```
+
+**Conclusion:** Seizure detection is a **non-linear** problem!
+
+### 7. **ROC from Any Variable!**
+
+**Mind-blowing insight:**
+- Don't need model probabilities
+- Can threshold ANY continuous variable
+- Create ROC by varying threshold
+- **Use:** Evaluate single features directly
 
 ---
 
-**Have a great week! Work on assignments and don't forget the 50-point bonus challenge!** 🚀
+## 🎬 Next Week Preview
+
+**Tuesday, February 10:**
+- Elastic Net regularization (L1, L2)
+- Multi-class classification
+- KNN in R (`buildKNNModel.R`)
+- Advanced evaluation metrics
+
+**Prepare by:**
+- Running `buildCompetitionModels.ipynb`
+- Trying TensorFlow Playground
+- Understanding overfitting vs underfitting
+- Completing all assignments
+
+---
+
+**Have a great week! Work on assignments and explore the 50-point bonus challenge!** 🚀
