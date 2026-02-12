@@ -1,14 +1,62 @@
-# BIOENG 2390: AI in Healthcare
+# Week 05: Non-Linear Models & Introduction to Unsupervised Learning
+### BIOENG 2390: AI in Healthcare - Spring 2026
 
+**Instructor:** Professor Prahlad Menon, PhD, PMP  
+**TA:** Bhavya Iyer  
 **University of Pittsburgh, Department of Bioengineering**
 
-## Course Overview
-Welcome to BIOENG 2390: AI in Healthcare. 
+---
 
-This course provides an introduction to artificial intelligence (AI) and machine learning (ML) in healthcare. The course covers fundamental concepts in AI/ML, data preprocessing, model development, evaluation, and deployment. The course also includes hands-on labs and assignments to apply these concepts to healthcare datasets.
+## 🎯 Week 05 Overview
 
+This week marks a major transition! We move from linear models to **non-linear classifiers** (K-Nearest Neighbors) and introduce the fundamentals of **unsupervised learning**. We'll understand when models overfit, how regularization helps, and preview dimensionality reduction techniques like PCA.
 
-# Week 5 Lecture Notes, Lecture 10 - Understanding features selection using supervised learning, dimensional reduction and clustering
+---
+
+## 📺 Lecture Recordings & Notes
+
+### Lecture 9 - February 10, 2026 (72 minutes)
+**Focus:** KNN, Regularization & Supervised vs Unsupervised Learning
+
+- **[Watch Recording](https://fathom.video/share/xQ7iyUP__2_szfK_DqgEDLnG_8nvayER)**
+- **[Read Detailed Lecture Notes](Lecture09_Notes_Feb10_2026.md)** ← Complete transcript
+
+**Topics Covered:**
+- TA session on assignment requirements and grading
+- K-Nearest Neighbors (KNN) algorithm deep dive
+- How KNN works: distance calculation and voting mechanism
+- Variable importance in non-linear models (experimental approach)
+- K-means clustering introduction (unsupervised learning)
+- Principal Component Analysis (PCA) preview
+- Elastic Net regularization (L1 Lasso + L2 Ridge)
+- Structure vs variance in data
+- Supervised vs unsupervised learning distinction
+- **Quiz 1 announcement:** Thursday, February 19
+
+**Key Insights:**
+> "You can't determine variable importance from an equation in non-linear models. You determine it by experimental observation."
+
+> "Variance must be a predictor of structure." (Core assumption of unsupervised learning)
+
+**Assignment Requirements from TA:**
+- ALL assignments need: Notebook + H2O Flow (if used) + Written Report
+- Report is OPTIONAL for Assignment 0 (no penalty)
+- Report is REQUIRED for Assignments 1 & 2 ("No report, no points!")
+- Use AI to help with syntax - focus is on understanding concepts
+
+---
+
+### Lecture 10 - February 12, 2026
+**Focus:** PCA Deep Dive & Dimensionality Reduction
+
+**Planned Topics:**
+- PCA mathematical derivation
+- Eigenvalues and eigenvectors
+- Covariance matrix
+- Visualizing 4D data in 2D
+- Linear vs non-linear dimensionality reduction
+
+---
 
 ## Key Topics Covered
 
