@@ -46,15 +46,36 @@ This week marks a major transition! We move from linear models to **non-linear c
 
 ---
 
-### Lecture 10 - February 12, 2026
-**Focus:** PCA Deep Dive & Dimensionality Reduction
+### Lecture 10 - February 12, 2026 (94 minutes)
+**Focus:** PCA Fundamentals & Mathematical Framework
 
-**Planned Topics:**
-- PCA mathematical derivation
-- Eigenvalues and eigenvectors
-- Covariance matrix
-- Visualizing 4D data in 2D
-- Linear vs non-linear dimensionality reduction
+- **[Watch Recording](https://fathom.video/share/azJWBGcZC6A8WNeY6pxuTwc7J5sw5saD)**
+- **[Read Detailed Lecture Notes](Lecture10_Notes_Feb12_2026.md)** ← Complete PCA derivation
+- **[Download PCA Slides](PCAbasics.pdf)** ← Mathematical framework
+
+**Topics Covered:**
+- Structure vs variance (CRITICAL distinction)
+- Gene expression example (M cells × N genes)
+- Why visualization fails beyond 3D (combinatorial explosion)
+- PCA mathematical framework (8-step process)
+- Eigenvectors as orthonormal basis sets
+- Eigenvalues as variance magnitudes
+- Covariance matrix and eigendecomposition
+- Projection via dot product
+- Information loss and explained variance ratio
+- Real applications: face recognition, anomaly detection, Google PageRank!
+
+**Key Insights:**
+> "Structure is the colors (labels). Variance is the shape (spread). Without labels, no structure!"
+
+> "400 genes picking 3 at a time = 10.6 MILLION 3D plots. I'd rather be jet skiing!"
+
+> "Eigenvectors corresponding to top eigenvalues = most well-connected nodes. This underpins Google search!"
+
+**Critical Math:**
+- Explained Variance = Σ(selected eigenvalues) / Σ(all eigenvalues)
+- Aim for >90% to minimize information loss
+- Top K eigenvectors capture most variance
 
 ---
 
