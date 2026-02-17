@@ -1,16 +1,36 @@
-# BIOENG 2390: AI in Healthcare
+# Week 06: PCA Applications, Clustering & Project Planning
+### BIOENG 2390: AI in Healthcare - Spring 2026
 
+**Instructor:** Professor Prahlad G. Menon, PhD, PMP  
 **University of Pittsburgh, Department of Bioengineering**
 
-## Course Overview
-Welcome to BIOENG 2390: AI in Healthcare. 
+---
 
-This course provides an introduction to artificial intelligence (AI) and machine learning (ML) in healthcare. The course covers fundamental concepts in AI/ML, data preprocessing, model development, evaluation, and deployment. The course also includes hands-on labs and assignments to apply these concepts to healthcare datasets.
+## 🎯 Week 06 Overview
 
+This week we apply PCA to real neural data, introduce K-means clustering, and start planning final projects. We'll see how to save/load models with pickle, understand the difference between PCA (linear/reproducible) and t-SNE (non-linear/non-reproducible), and learn about agile project management with Kanban Flow.
 
-# Week 6 Lecture Notes, Lecture 11 
-## Lecture Notes: Principal Component Analysis and Project Discussion
-Date: February 18, 2025
+---
+
+## 📺 Lecture Recordings & Notes
+
+### Lecture 11 - February 17, 2026 (65 minutes)
+**Focus:** Projects, Datasets & Practical PCA/K-Means
+
+- **[Watch Recording](https://fathom.video/share/GHbQG-wscK9FsAauEVrKcKscHDHp5ryj)**
+- **[Read Detailed Lecture Notes](Lecture11_Notes_Feb17_2026.md)** ← Complete transcript
+
+**Topics Covered:**
+- Final project planning and team formation (teams of 3, max 4)
+- Kanban Flow for agile project management
+- Dataset resources: HuggingFace, PhysioNet, Kaggle, Google Dataset Search, Stanford AIMI
+- Neural spike data analysis (fMRI/EEG context)
+- Z-score normalization per time point
+- Practical PCA with sklearn (34D → 5D → 2D)
+- K-means clustering in PC space
+- Saving models with pickle (PCA, K-means, normalization params)
+- t-SNE introduction (non-linear, non-reproducible)
+- Applying models trained on 50 to all 3,636 observations
 
 ## 1. Administrative Updates
 - Currently in Week 6 of the course
