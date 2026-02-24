@@ -14,13 +14,18 @@
 
 ## 📋 Instructions
 
-1. Answer all questions to the best of your ability
-2. You may reference lecture notes, notebooks, and online resources
-3. Show your work and reasoning
+**Required:** Answer **2 questions from each section** (Sections 1-6)  
+**Bonus:** Additional questions beyond the required 2 per section count as bonus points
+
+1. You may reference lecture notes, notebooks, and online resources (open book!)
+2. Show your work and reasoning for all answers
+3. Clearly mark which questions you're answering for credit vs bonus
 4. Submit as PDF or Word document via Canvas
 5. Include your name and date
 
-**Total Points:** 100 (+ 20 bonus possible)
+**Base Points:** 90 points (2 questions × 6 sections × ~7.5 pts average)  
+**Bonus Points:** Up to 60+ points possible (extra questions + practical)  
+**Maximum:** 150 points total
 
 ---
 
@@ -234,34 +239,44 @@ Fold  AUC
 
 ## 📊 Grading Rubric
 
-**Section 1 (Feature Engineering):** 20 points
-- Correct calculations
-- Clear explanations
-- Connections to lecture material
+**Required (90 points):** Answer 2 questions from each of 6 sections
 
-**Section 2 (Classification):** 25 points
-- Accurate metric calculations
-- Understanding of ROC/thresholds
-- Correct derivations
+**Section 1:** Answer 2/2 questions = 20 points  
+**Section 2:** Answer 2/3 questions = ~15-18 points (varies by selection)  
+**Section 3:** Answer 2/2 questions = 20 points  
+**Section 4:** Answer 2/2 questions = 15 points  
+**Section 5:** Answer 2/2 questions = 20 points  
+**Section 6:** Answer 2/8 questions = 10 points
 
-**Section 3 (Overfitting):** 20 points
-- Identifies risks correctly
-- Proposes viable solutions
+**Base Total: ~90-100 points**
+
+---
+
+**Bonus Points:**
+
+**Extra Questions:**
+- Section 1: +0 (only 2 questions)
+- Section 2: +7 points (3rd question)
+- Section 3: +0 (only 2 questions)
+- Section 4: +0 (only 2 questions)
+- Section 5: +0 (only 2 questions)
+- Section 6: +30 points (answer 6 more = 6×5)
+
+**Section 7 Practical:** +20 points
+
+**In-Class Submission:** +20 points
+
+**Maximum Total: 90 + 57 + 20 + 20 = 187 points**  
+**Effectively capped at ~150 points for grading**
+
+---
+
+**Grading Criteria:**
+- Shows work for calculations
+- References specific lectures  
 - Demonstrates understanding
-
-**Section 4 (Cross-Validation):** 15 points
-- Explains methods accurately
-- Interprets results correctly
-- Makes sound judgments
-
-**Section 5 (Dim Reduction):** 20 points
-- Distinguishes structure vs variance
-- Calculates correctly
-- Explains limitations
-
-**Bonus Section:** +20 points
-- Demonstrates hands-on skills
-- Connects theory to practice
+- Makes connections across weeks
+- Clear, organized answers
 
 ---
 
