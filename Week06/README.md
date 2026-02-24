@@ -32,6 +32,35 @@ This week we apply PCA to real neural data, introduce K-means clustering, and st
 - t-SNE introduction (non-linear, non-reproducible)
 - Applying models trained on 50 to all 3,636 observations
 
+---
+
+### Lecture 12 - February 19, 2026 (68 minutes)
+**Focus:** Project Pitches, Signal Standardization & t-SNE Problem
+
+- **[Watch Recording](https://fathom.video/share/KsFonyWyPqsb9ubznFJ-onPKHsyNoceJ)**
+- **[Read Detailed Lecture Notes](Lecture12_Notes_Feb19_2026.md)** ← Complete analysis
+
+**Topics Covered:**
+- Individual project pitches and dataset identification
+- Signal resampling and segmentation for standardization
+- Upsampling vs downsampling (aliasing problem)
+- Fourier transform method for resampling
+- t-SNE non-reproducibility explained
+- Workaround: Training regression models on t-SNE embeddings
+- Comparison of all methods: PCA, NMF, MDS, Isomap, LLE, t-SNE
+- Assignment 4 deadline: March 6 (FIRM!)
+- Week 7: Self-paced quiz with +20 bonus
+
+**Project Ideas:**
+1. Pacemaker lead placement (need dataset)
+2. ALS motor unit loss (HD-EMG data)
+3. Social determinants of health analysis
+4. Lower back pain from ultrasound
+5. Wheelchair propulsion classification
+
+**Key Insight:**
+> "Start with the dataset, then define the project. If no data exists, pivot quickly!"
+
 ## 1. Administrative Updates
 - Currently in Week 6 of the course
 - Assignments status:
