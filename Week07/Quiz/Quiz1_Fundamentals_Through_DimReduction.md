@@ -184,7 +184,36 @@ Fold  AUC
 
 ---
 
-## Section 6: Practical Application (Bonus: +20 points)
+## Section 6: Conceptual Understanding (30 points)
+**Answer ANY 6 questions for full credit. Answer all 8 for +10 bonus points.**
+
+### Question 6.1 (5 points)
+**What is the purpose of dimensionality reduction?**
+
+### Question 6.2 (5 points)
+**Distinguish between structure and variance in terms of distribution of multi-dimensional data.**
+
+### Question 6.3 (5 points)  
+**Describe one dimensionality reduction technique that aligns to structure and another that aligns to variance in data.**
+
+### Question 6.4 (5 points)
+**How would you describe a linear v/s a non-linear modeling method?**
+
+### Question 6.5 (5 points)
+**Describe the symptoms of a non-linear unsupervised clustering method and name two such methods.**
+
+### Question 6.6 (5 points)
+**Describe three metrics used for defining performance of a binary classifier.**
+
+### Question 6.7 (5 points)
+**In PCA, how many principal components are generated for a set of M N-dimensional vectors?**
+
+### Question 6.8 (5 points)
+**How do you know that a linear modeling method for unsupervised dimensionality reduction is going to work out for a clustering task in a limited 2D sub-space?**
+
+---
+
+## Section 7: Practical Application (Bonus: +20 points)
 
 ### Complete ONE of the following:
 
