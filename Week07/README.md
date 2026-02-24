@@ -15,23 +15,31 @@ This week features **self-paced learning** with a take-home exercise on grokking
 ## 📚 Week 07 Structure
 
 ### Lecture 13 - February 24, 2026 (Self-Paced)
-**Mode:** Take-home exercise with reflection questions
+**Mode:** Quiz + Supplemental Exercise
 
-📁 **[Go to Lecture13_SelfPaced folder](Lecture13_SelfPaced/)**
+📁 **Two Components:**
 
-**Main Assignment:**
-- **[Grokking Exercise](Lecture13_SelfPaced/Grokking_Exercise.md)** ← Start here!
+**1. Quiz Folder:** `Quiz/`
+- **[Quiz 1: Fundamentals Through Dimensionality Reduction](Quiz/Quiz1_Fundamentals_Through_DimReduction.md)** ← Main assessment
+  - 100 points (+ 20 bonus)
+  - Covers Weeks 1-6 material
+  - Open book, open notes
+  - 6 sections: Feature Engineering, Classification, Overfitting, Cross-Validation, Dim Reduction, Bonus
+  - **Bonus:** +20 points if submitted during class (5:30-7:00 PM)
+  - **Deadline:** Before Thursday (Feb 26)
+
+**2. Supplemental Exercise:** `Lecture13_SelfPaced/`
+- **[Grokking Exercise](Lecture13_SelfPaced/Grokking_Exercise.md)** ← Additional learning
   - Read blog post on 777-parameter transformers
   - Clone and run repository
-  - Answer 3 reflection questions connecting to course material
-  - **Bonus:** +20 points if submitted during class time (5:30-7 PM)
-  - **Deadline:** Before Thursday (Feb 26) for full points
+  - 3 reflection questions for discussion Thursday
+  - Connects overfitting to memorization
+  - Explores small model advantages
 
-**What You'll Explore:**
-- Grokking phenomenon (sudden generalization after memorization)
-- Small models vs large models (777 parameters vs billions)
-- Overfitting as memorization
-- Connections to Weeks 1-6 concepts
+**What to Do:**
+1. **Complete Quiz 1** (required)
+2. **Explore Grokking** (prepares for Thursday discussion)
+3. **Review supplemental PDFs** (optional)
 
 ---
 
