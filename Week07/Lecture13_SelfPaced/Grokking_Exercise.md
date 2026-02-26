@@ -171,7 +171,7 @@
 
 **Required:**
 - [Grokking Blog Post](https://blog.themenonlab.com/blog/grokking-777-parameter-transformer/)
-- [GitHub Repository](https://github.com/menonpg/grokking_small_transformer)
+- [GitHub Repository](https://github.com/menonpg/tiny-transformers)
 
 **Recommended (from our course):**
 - Week 04 Lecture 8: Overfitting, curse of dimensionality, variance pizza
