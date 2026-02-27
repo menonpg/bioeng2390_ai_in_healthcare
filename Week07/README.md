@@ -43,14 +43,43 @@ This week features **self-paced learning** with a take-home exercise on grokking
 
 ---
 
-### Lecture 14 - February 26, 2026
-**Mode:** Discussion + Project Proposal Work
+### Lecture 14 - February 26, 2026 (93 minutes)
+**Focus:** Grokking, GMM, LDA & MNIST Dimensionality Reduction
 
-**Planned Topics:**
-- Discussion of grokking insights
-- Project proposal generation with Gen AI
-- Advanced topics preview
-- Q&A on pending assignments
+- **[Watch Recording](https://fathom.video/share/zkCJkr8yzADPsqqvvHMgqkdfn1fL-Ymb)**
+- **[Read Detailed Lecture Notes](Lecture14_Notes_Feb26_2026.md)** ← Complete transcript
+
+**Topics Covered:**
+- Quiz 1 review and grading clarification (90 base points, up to 150 with bonuses)
+- Grokking phenomenon deep dive (generalization after memorization)
+- 777-parameter transformer learning addition
+- Professor's blog posts on grokking experiments
+- Transformer architecture basics ("Attention is All You Need" paper)
+- Gaussian Mixture Models (GMM) - soft clustering with probabilities
+- K-Means clustering theory and decision boundary combinatorics
+- Linear Discriminant Analysis (LDA) - supervised dimensionality reduction
+- MNIST dataset (28×28 → 784D → reduced space)
+- Reshaping 2D images to 1D vectors
+- Multiple dimensionality reduction methods: PCA, NMF, MDS, Isomap, LLE, t-SNE
+- t-SNE perplexity parameter explained
+- Project team formation urgency (7 students still need teams!)
+- Assignment 4 timeline (after spring break for formal submission)
+
+**Key Insights:**
+> "Grokking is the colloquial term for generalization of a learning exercise... It's a little bit like finding a snow leopard."
+
+> "Gaussian mixture modeling defines a classification paradigm that is nonlinear as a result."
+
+> "Linear discriminant analysis brings some supervision to that process and says, let me try and find a direction that will help you maximize separability of your classes."
+
+**Major Concepts:**
+- Grokking = delayed generalization (can take 10,000+ epochs)
+- Small models (N > P) help prevent overfitting but don't guarantee quick grokking
+- GMM vs K-Means: soft vs hard assignments, curved vs linear boundaries
+- LDA as supervised alternative to PCA - maximizes class separability
+- MNIST as standard benchmark (Yann LeCun, 1993)
+- t-SNE for visualization only (non-reproducible, no .transform())
+- Choosing right dimensionality reduction method based on needs
 
 ---
 
